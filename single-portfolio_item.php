@@ -40,35 +40,45 @@
 	array_push( $images, );
 	?>
 
-	<div class="bp_singlepage_selector_image_row" style="width:100%; margin-bottom: 3%;">
+	<div id="bp_thumbnail_selector_row">
 
 		<?php if ( $images[0] != NULL && count( array_filter($images ) ) > 1 ) { ?>
 		<div class="bp_singlepage_thumbnail_div">
-			<img class="bp_portfolio_item_selector_image bp_portfolio_item_selected_image" src="<?php echo $images[0]; ?> " />
+				<div class="bp_trim_thumbnail">
+					<img class="bp_portfolio_item_selector_image bp_portfolio_item_selected_image" src="<?php echo $images[0]; ?> " />
+				</div>
 		</div>
 		<?php } ?>
 		
 		<?php if ( $images[1] != NULL ) { ?>
 			<div class="bp_singlepage_thumbnail_div">
-			<img class="bp_portfolio_item_selector_image" src="<?php echo $images[1];?> " />
+				<div class="bp_trim_thumbnail">
+					<img class="bp_portfolio_item_selector_image" src="<?php echo $images[1];?> " />
+				</div>
 		</div>
 		<?php } ?>
 
 		<?php if ( $images[2] != NULL ) { ?>
 			<div class="bp_singlepage_thumbnail_div">
-			<img class="bp_portfolio_item_selector_image" src="<?php echo $images[2]; ?> " />
-		</div>
+				<div class="bp_trim_thumbnail">
+					<img class="bp_portfolio_item_selector_image" src="<?php echo $images[2]; ?> " />
+				</div>
+			</div>
 		<?php } ?>
 
 		<?php if ( $images[3] != NULL ) { ?>
 			<div class="bp_singlepage_thumbnail_div">
-			<img class="bp_portfolio_item_selector_image" src="<?php echo $images[3]; ?> " />
-		</div>
+				<div class="bp_trim_thumbnail">
+					<img class="bp_portfolio_item_selector_image" src="<?php echo $images[3]; ?> " />
+				<div>
+			</div>
 		<?php } ?>
 
 		<?php if ( $images[4] != NULL ) { ?>
 		<div class="bp_singlepage_thumbnail_div">
-			<img class="bp_portfolio_item_selector_image" src="<?php echo $images[4]; ?> " />
+			<div class="bp_trim_thumbnail">
+				<img class="bp_portfolio_item_selector_image" src="<?php echo $images[4]; ?> " />
+			</div>
 		</div>
 		<?php } ?>
 
