@@ -199,13 +199,13 @@ class rothman_portfolio {
 					$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
 				}
 
-
+				$content .= '<a href="' . get_permalink() . '">';
+				
 				$content .= '<div class="col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 
-				$content .= '<a href="' . get_permalink() . '">';
 
 					$content .= '<div id="portfolio_image_div">';
-					$content .= get_the_post_thumbnail( get_the_ID(), 'home-size' );
+					$content .= get_the_post_thumbnail( get_the_ID(), 'large' );
 					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
 				$content .= '</div>';
 
@@ -217,7 +217,8 @@ class rothman_portfolio {
 					$content .= '</div>'; // CLOSE PORTFOLIO ROW
 				}
 
-				$row_counter++;}
+				$row_counter++;
+			}
 
 			wp_reset_postdata();}
 
