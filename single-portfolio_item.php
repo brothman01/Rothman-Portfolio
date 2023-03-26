@@ -40,6 +40,7 @@
 	array_push( $images, );
 	?>
 
+<?php if ( $images[0] != NULL && count( array_filter($images ) ) > 1 ) { ?>
 	<div id="bp_thumbnail_selector_row">
 
 		<?php if ( $images[0] != NULL && count( array_filter($images ) ) > 1 ) { ?>
@@ -83,6 +84,7 @@
 		<?php } ?>
 
 	</div>
+	<?php } ?>
 
 
 
