@@ -215,9 +215,20 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1186px) {
+  	
+  .bp_portfolio_item_cell {
+  	margin-left: 0px!important;
+	margin:0px!important;
+	margin: 0px!important;
+  }
+  
+}
+
+/* Smartphones (portrait and landscape) ----------- */
 @media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+and (min-device-width : 1025px) 
+and (max-device-width : 1175px) {
   
   .bp_singlepage_portfolio_item_huge_image {
   	background-size: 100%;
@@ -238,7 +249,8 @@ and (max-device-width : 480px) {
 	}
   	
   .bp_portfolio_item_cell {
-  	margin-left: 0px!important;	
+  	margin-left: 0px!important;
+	margin:0px!important;
   }
   
 }

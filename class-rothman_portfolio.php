@@ -186,41 +186,99 @@ class rothman_portfolio {
 		'post_status' => 'publish',
 		];
 
-		$posts = new WP_Query( $args );
+		$posts = get_posts( $args );
 
-		// The Loop
-		if ( $posts->have_posts() ) {
-			$row_counter = 0;
+		$rows = array_chunk($posts, 3);
 
-			while ( $posts->have_posts() ) {
-				$posts->the_post();
+		foreach( $rows as $row ) {
+			$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
 
-				if ( $row_counter % 3 == 0 ) {
-					$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
-				}
 
-				$content .= '<a href="' . get_permalink() . '">';
+
+			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
 				
-				$content .= '<div class="col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+				$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 
 
 					$content .= '<div id="portfolio_image_div">';
-					$content .= get_the_post_thumbnail( get_the_ID(), 'large' );
+					$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
 					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
 				$content .= '</div>';
 
-				$content .= '<p style="text-align: center;">' . get_the_title() . '</p>';
+				$content .= '<p style="text-align: center;">' . get_the_title( $row[0]->ID) . '</p>';
 
 				$content .= '</div></a>';
 
-				if ( $row_counter % 3 == 3 ) {
-					$content .= '</div>'; // CLOSE PORTFOLIO ROW
+				if (count($row) > 1) {
+				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
+				
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+
+
+					$content .= '<div id="portfolio_image_div">';
+					$content .= get_the_post_thumbnail( $row[1]->ID, 'large' );
+					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
+				$content .= '</div>';
+
+				$content .= '<p style="text-align: center;">' . get_the_title( $row[1]->ID) . '</p>';
+
+				$content .= '</div></a>';
 				}
 
-				$row_counter++;
+			if (count($row) > 2) {
+				$content .= '<a href="' . get_permalink( $row[2]->ID ) . '">';
+				
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+
+
+					$content .= '<div id="portfolio_image_div">';
+					$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
+					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
+				$content .= '</div>';
+
+				$content .= '<p style="text-align: center;">' . get_the_title( $row[2]->ID) . '</p>';
+
+				$content .= '</div></a>';
 			}
 
-			wp_reset_postdata();}
+
+
+				$content .= '</div>'; // CLOSE PORTFOLIO ROW
+		}
+
+		// // The Loop
+		// if ( $posts->have_posts() ) {
+		// 	$row_counter = 0;
+
+		// 	while ( $posts->have_posts() ) {
+		// 		$posts->the_post();
+
+		// 		if ( $row_counter % 3 == 0 ) {
+		// 			$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
+		// 		}
+
+		// 		$content .= '<a href="' . get_permalink() . '">';
+				
+		// 		$content .= '<div class="col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+
+
+		// 			$content .= '<div id="portfolio_image_div">';
+		// 			$content .= get_the_post_thumbnail( get_the_ID(), 'large' );
+		// 			//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
+		// 		$content .= '</div>';
+
+		// 		$content .= '<p style="text-align: center;">' . get_the_title() . '</p>';
+
+		// 		$content .= '</div></a>';
+
+		// 		if ( $row_counter % 3 == 3 ) {
+		// 			$content .= '</div>'; // CLOSE PORTFOLIO ROW
+		// 		}
+
+		// 		$row_counter++;
+		// 	}
+
+		// 	wp_reset_postdata();}
 
 			$content .= '</div>';
 
