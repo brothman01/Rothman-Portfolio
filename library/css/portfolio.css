@@ -35,6 +35,7 @@
 	border: 25px solid black;
 	margin: 20px;
 	background: var(--highlight-color);
+	display: table;
 }
 
 .bp_portfolio_item_cell {
@@ -92,19 +93,17 @@
 .bp_singlepage_thumbnail_div {
 	border: solid black 1px;
 	width: 20%;
-	float: left;
-	text-align: center;
-	padding: 10px;
-	height: 180px;
+	height: 200px;
+	/* padding: 10px; */
 	overflow-y: hidden;
 	background: white;
+	display: table-cell!important;
+	vertical-align: middle;
+    text-align: center;
 }
 
-	.bp_singlepage_thumbnail_div img {
-		height: 100%;
-	}
-
-.bp_trim_thumbnail {
+.bp_singlepage_thumbnail_div .bp_trim_thumbnail {
+	display: inline-block;
 	max-height:150px;
     width: 75%;
     overflow: hidden;
@@ -114,7 +113,7 @@
 .bp_portfolio_item_selector_image {
 	width: 75%;
 	transition: opacity 1s ease;
-	cursor: pointer; cursor: hand;
+	cursor: pointer;
 	margin: 0px auto;
 }
 
@@ -226,9 +225,8 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 1025px) 
-and (max-device-width : 1175px) {
+@media only screen  
+and (max-width : 480px) {
   
   .bp_singlepage_portfolio_item_huge_image {
   	background-size: 100%;
@@ -236,16 +234,19 @@ and (max-device-width : 1175px) {
   }
 
   #bp_thumbnail_selector_row {
-	flex-direction: column;
+	display: block;
   }
 
-  .bp_singlepage_thumbnail_div {
-	float: none;
+
+
+  .bp_singlepage_thumbnail_div  .bp_trim_thumbnail {
+	display: inline-block;
   }
 
 	.bp_singlepage_thumbnail_div {
-		width: 100%;
 		text-align: center;
+		display: block;
+		width: 100%;
 	}
   	
   .bp_portfolio_item_cell {
