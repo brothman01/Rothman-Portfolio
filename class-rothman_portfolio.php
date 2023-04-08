@@ -191,7 +191,7 @@ class rothman_portfolio {
 		$rows = array_chunk($posts, 3);
 
 		foreach( $rows as $row ) {
-			$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
+			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">'; // OPEN PORTFOLIO ROW
 
 
 

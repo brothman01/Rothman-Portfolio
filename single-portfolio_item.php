@@ -9,7 +9,9 @@
 <div class="wrap" style="width: 80%; margin: 0px auto;">
 
 	<h2 style="margin-bottom: 3%;"> <?php echo get_the_title(); ?></h2>
-	<div class="bp_singlepage_portfolio_item_huge_image" style="background-position: center; background-image: url(<?php echo get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true );?>);"></div>
+	<div class="bp_singlepage_portfolio_item_huge_image" style="background-position: center;">
+		<img src="<?php echo get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true );?>" style="margin: 0px auto;" />
+	</div>
 	
 				<?php
 				while ( have_posts() ) : the_post();
