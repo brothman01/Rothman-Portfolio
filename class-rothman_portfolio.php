@@ -32,27 +32,23 @@ class rothman_portfolio {
 		// // register and add the metaboxes to the portfolio item CPT
 		add_action( 'cmb2_admin_init', [ $this, 'bp_register_metaboxes' ] );
 
-		// // load styles
+		// load styles
 		 add_action( 'wp_enqueue_scripts', [ $this, 'rp_enqueue_styles' ] );
 
-		// // register full portfolio  page shortcode
+		// register full portfolio  page shortcode
 		add_shortcode( 'portfolio_page', [ $this, 'bp_portfolio_page_shortcode' ] );
 
 		// register full portfolio  page shortcode
 		add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
 
-		// // use my single template for single portfolio-item s
-		// //add_filter('template_redirect', [ $this, 'my_custom_template' ] );
+		// use my single template for single portfolio-item \\
 		 add_filter('template_include', [ $this, 'bp_include_template' ], 1);
 
-		// load styles
-		//add_action( 'wp_enqueue_scripts', [ $this, 'bp_enqueue_styles' ] );
-
-		// // add support for home portfolio carousesl image size
+		// add support for home portfolio carousesl image size \\
 		 add_action( 'init', [ $this, 'odevice_image_sizes' ] );
 
 		 // WordPress block actions \\
-		add_action( 'init', [ $this, 'brs_create_block' ] );
+		add_action( 'init', [ $this, 'bp_create_block' ] );
 
 	}
 
@@ -249,40 +245,6 @@ class rothman_portfolio {
 				$content .= '</div>'; // CLOSE PORTFOLIO ROW
 		}
 
-		// // The Loop
-		// if ( $posts->have_posts() ) {
-		// 	$row_counter = 0;
-
-		// 	while ( $posts->have_posts() ) {
-		// 		$posts->the_post();
-
-		// 		if ( $row_counter % 3 == 0 ) {
-		// 			$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
-		// 		}
-
-		// 		$content .= '<a href="' . get_permalink() . '">';
-				
-		// 		$content .= '<div class="col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-
-
-		// 			$content .= '<div id="portfolio_image_div">';
-		// 			$content .= get_the_post_thumbnail( get_the_ID(), 'large' );
-		// 			//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
-		// 		$content .= '</div>';
-
-		// 		$content .= '<p style="text-align: center;">' . get_the_title() . '</p>';
-
-		// 		$content .= '</div></a>';
-
-		// 		if ( $row_counter % 3 == 3 ) {
-		// 			$content .= '</div>'; // CLOSE PORTFOLIO ROW
-		// 		}
-
-		// 		$row_counter++;
-		// 	}
-
-		// 	wp_reset_postdata();}
-
 			$content .= '</div>';
 
 		return $content;
@@ -403,7 +365,7 @@ class rothman_portfolio {
 	/* 
 	 * Add the block to the WordPress block editor
 	 */
-	public function brs_create_block() {
+	public function bp_create_block() {
 		register_block_type( __DIR__ . '/wordpress-block-react/build' );
 	}
 }
