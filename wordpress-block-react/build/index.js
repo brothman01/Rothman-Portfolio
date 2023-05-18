@@ -57,21 +57,29 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     let theBio = item.cmb2.custom_fields.br_bio;
     let thePortrait = item.cmb2.custom_fields.br_portrait;
     let theTitle = item.cmb2.custom_fields.br_title;
-    let theRow = `<div class="staff-member-div" style="float:left; width: 100%">
-							<a href="` + thePermalink + `">
-								<div style="float: left;">
-									<img class="staff-portrait" src="` + thePortrait + `" style="width: 124px; margin: 0px auto" />
-									<br />
-									<p class="title-text" style="padding: 0px 0px 0px 0px!important; text-align: center;">` + theTitle + `</p>
-								</div>
-							</a>
 
-				<div style="float: left;">
-						<div class="name-text"><b>` + theName + `</b></div>
-						<div class="bio-text">` + theBio + `</div>
-				</div>
-
-				</div>`;
+    // create the row for the post using the data entered into the fields on the dashboard \\
+    let theRow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "staff-member-div",
+      style: "float:left; width: 100%"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "{thePermalink}"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: "float: left;"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      class: "staff-portrait",
+      src: "{thePortrait}",
+      style: "width: 124px; margin: 0px auto"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      class: "title-text",
+      style: "padding: 0px 0px 0px 0px!important; text-align: center;"
+    }, theTitle))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: "float: left;"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "name-text"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, theName)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "bio-text"
+    }, theBio)));
     return theRow;
   }
   render() {
@@ -283,7 +291,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/react-dynamic","version":"0.1.0","title":"Team Block (react)","category":"embed","icon":"smiley","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"example-dynamic","editorScript":"file:./editor.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/react-dynamic","version":"0.1.0","title":"Portfolio Block (react)","category":"embed","icon":"smiley","description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"example-dynamic","editorScript":"file:./editor.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ })
 

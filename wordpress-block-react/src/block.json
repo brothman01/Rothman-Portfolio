@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "create-block/react-dynamic",
 	"version": "0.1.0",
-	"title": "Team Block (react)",
+	"title": "Portfolio Block (react)",
 	"category": "embed",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
