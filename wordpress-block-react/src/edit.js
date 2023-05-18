@@ -33,7 +33,7 @@ export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __(
-				'Team page (react)',
+				'Portfolio Page',
 				'example-dynamic'
 			) }
 		</p>

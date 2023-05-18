@@ -39,7 +39,7 @@ class rothman_portfolio {
 		add_shortcode( 'portfolio_page', [ $this, 'bp_portfolio_page_shortcode' ] );
 
 		// register full portfolio  page shortcode
-		add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
+		// add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
 
 		// use my single template for single portfolio-item \\
 		 add_filter('template_include', [ $this, 'bp_include_template' ], 1);
@@ -325,13 +325,15 @@ class rothman_portfolio {
 		wp_register_script( 'portfolio-script', plugins_url( 'library/js/brothman_portfolio.js', __FILE__ ), [ 'jquery' ] );
 		wp_enqueue_script( 'portfolio-script' );
 
+		wp_enqueue_script( 'index', plugin_dir_url( __FILE__) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
+
 		// CaroFredSel script.
-		wp_register_script( 'CarouFredSel-Script', plugins_url('library/js/jquery.carouFredSel-6.1.0-packed.js', __FILE__), [ 'jquery' ] );
-		wp_enqueue_script( 'CarouFredSel-Script' );
+		// wp_register_script( 'CarouFredSel-Script', plugins_url('library/js/jquery.carouFredSel-6.1.0-packed.js', __FILE__), [ 'jquery' ] );
+		// wp_enqueue_script( 'CarouFredSel-Script' );
 
 		// brothman_portfolio script
-		wp_register_script( 'brothman_portfolio_carousel_init', plugins_url('library/js/brothman_portfolio_init.js', __FILE__), [ 'jquery' ] );
-		wp_enqueue_script( 'brothman_portfolio_carousel_init' );
+		// wp_register_script( 'brothman_portfolio_carousel_init', plugins_url('library/js/brothman_portfolio_init.js', __FILE__), [ 'jquery' ] );
+		// wp_enqueue_script( 'brothman_portfolio_carousel_init' );
 
 		wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 

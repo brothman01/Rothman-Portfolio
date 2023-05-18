@@ -24,24 +24,21 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     this.state = {
       posts: []
     };
-    console.log('foo');
   }
   componentDidMount() {
     // Fetch the data from the URL
     const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=5&post_status=published";
     fetch(theUrl).then(response => response.json()).then(response =>
     // set the posts to the state variable 'posts' in the second then()
-    // this.setState({
-    //   posts: response,
-    // })
-    console.log('bar'));
+    this.setState({
+      posts: response
+    }));
   }
   createRows = () => {
-    // const { posts } = this.state;
-
-    // const listItems = posts.map( ( post, index ) =>
-    //   console.log(post)
-    // );
+    const {
+      posts
+    } = this.state;
+    const listItems = posts.map((post, index) => console.log(post));
     // declare the state variable as a constant
 
     // check if posts exists and has a non-zero length
@@ -148,7 +145,7 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 function Edit() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team page (react)', 'example-dynamic'));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Portfolio Page', 'example-dynamic'));
 }
 
 /***/ }),

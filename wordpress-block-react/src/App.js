@@ -7,7 +7,6 @@ class App extends React.Component {
     this.state = {
       posts: []
     };
-    console.log('foo');
   }
 
   componentDidMount() {
@@ -16,19 +15,18 @@ class App extends React.Component {
         fetch(theUrl)
         .then(response => response.json())
         .then(response => // set the posts to the state variable 'posts' in the second then()
-          // this.setState({
-          //   posts: response,
-          // })
-          console.log('bar')
+          this.setState({
+            posts: response,
+          })
         )
       }
 
   createRows = () => {
-        // const { posts } = this.state;
+        const { posts } = this.state;
 
-        // const listItems = posts.map( ( post, index ) =>
-        //   console.log(post)
-        // );
+        const listItems = posts.map( ( post, index ) =>
+          console.log(post)
+        );
     // declare the state variable as a constant
 
 
