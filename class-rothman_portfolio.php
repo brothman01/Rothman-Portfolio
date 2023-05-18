@@ -51,6 +51,9 @@ class rothman_portfolio {
 		// // add support for home portfolio carousesl image size
 		 add_action( 'init', [ $this, 'odevice_image_sizes' ] );
 
+		 // WordPress block actions \\
+		add_action( 'init', [ $this, 'brs_create_block' ] );
+
 	}
 
 	/**
@@ -395,6 +398,14 @@ class rothman_portfolio {
 		//     add_image_size( 'home-size', 300, 100, true );
 		// }
 
+
+
+	/* 
+	 * Add the block to the WordPress block editor
+	 */
+	public function brs_create_block() {
+		register_block_type( __DIR__ . '/wordpress-block-react/build' );
+	}
 }
 
 new rothman_portfolio();
