@@ -27,7 +27,7 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
   }
   componentDidMount() {
     // Fetch the data from the URL
-    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=5&post_status=published";
+    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published";
     fetch(theUrl).then(response => response.json()).then(response =>
     // set the posts to the state variable 'posts' in the second then()
     this.setState({
