@@ -30,7 +30,7 @@ class rothman_portfolio {
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT
-		add_action( 'cmb2_admin_init', [ $this, 'bp_register_metaboxes' ] );
+		add_action( 'cmb2_init', [ $this, 'bp_register_metaboxes' ] );
 
 		// load styles
 		 add_action( 'wp_enqueue_scripts', [ $this, 'rp_enqueue_styles' ] );
