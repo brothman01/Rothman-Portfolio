@@ -27,7 +27,7 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
   }
   componentDidMount() {
     // Fetch the data from the URL
-    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published";
+    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed";
     fetch(theUrl).then(response => response.json()).then(response =>
     // set the posts to the state variable 'posts' in the second then()
     this.setState({
@@ -38,55 +38,38 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     const {
       posts
     } = this.state;
-    const listItems = posts.map((post, index) => console.log(post));
+
     // declare the state variable as a constant
 
     // check if posts exists and has a non-zero length
-    // if (posts && posts.length) {
-
-    // declare k for the key outside of the loop
-    // let k = 1
-
-    // const listItems = posts.map( ( post, index ) =>
-    // this.createRow(post)
-    // );
-
-    // return listItems;
-
-    // }
-
-    // return true;
-    return 'asdf';
+    if (posts && posts.length) {
+      const listItems = posts.map((post, index) => this.createRow(post));
+      const logPosts = posts.map((post, index) => console.log(post));
+      return listItems;
+    }
+    return false;
   };
 
   // function to generate a row to display in the block for each staff member
-  // createRow(item) {
-  //   let thePermalink = item.link;
-  //   let theName = item.cmb2.custom_fields.br_name;
-  //   let theBio = item.cmb2.custom_fields.br_bio;
-  //   let thePortrait = item.cmb2.custom_fields.br_portrait;
-  //   let theTitle = item.cmb2.custom_fields.br_title;
+  createRow(item) {
+    let thePermalink = item.link;
+    let featured_image = item._embedded['wp:featuredmedia'][0].source_url;
+    let image1 = item.cmb2.Brothman_Portfolio_metabox.Brothman_Portfolio_image1;
+    //   let theBio = item.cmb2.rothman_Portfolio_metabox.br_bio;
+    //   let thePortrait = item.cmb2.rothman_Portfolio_metabox.br_portrait;
+    let theTitle = item.title.rendered;
 
-  //   // create the row for the post using the data entered into the fields on the dashboard \\
-  //   let theRow = <div class="staff-member-div" style="float:left; width: 100%">
-  // 							<a href="{thePermalink}">
-  // 								<div style="float: left;">
-  // 									<img class="staff-portrait" src="{thePortrait}" style="width: 124px; margin: 0px auto" />
-  // 									<br />
-  // 									<p class="title-text" style="padding: 0px 0px 0px 0px!important; text-align: center;">{theTitle}</p>
-  // 								</div>
-  // 							</a>
-
-  // 				<div style="float: left;">
-  // 						<div class="name-text"><b>{theName}</b></div>
-  // 						<div class="bio-text">{theBio}</div>
-  // 				</div>
-
-  // 				</div>;
-
-  //   return theRow;
-  // }
-
+    // create the row for the post using the data entered into the fields on the dashboard \\
+    let theRow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: thePermalink
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      class: "portfolio-grid-box-image",
+      src: featured_image
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, theTitle)));
+    return theRow;
+  }
   render() {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, this.createRows());
   }
