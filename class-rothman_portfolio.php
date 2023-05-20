@@ -30,29 +30,26 @@ class rothman_portfolio {
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT
-		add_action( 'cmb2_admin_init', [ $this, 'bp_register_metaboxes' ] );
+		add_action( 'cmb2_init', [ $this, 'bp_register_metaboxes' ] );
 
-		// // load styles
+		// load styles
 		 add_action( 'wp_enqueue_scripts', [ $this, 'rp_enqueue_styles' ] );
 
-		// // register full portfolio  page shortcode
+		// register full portfolio  page shortcode
 		add_shortcode( 'portfolio_page', [ $this, 'bp_portfolio_page_shortcode' ] );
 
 		// register full portfolio  page shortcode
-		add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
+		// add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
 
-		// // use my single template for single portfolio-item s
-		// //add_filter('template_redirect', [ $this, 'my_custom_template' ] );
+		// use my single template for single portfolio-item \\
 		 add_filter('template_include', [ $this, 'bp_include_template' ], 1);
 
-		// load styles
-		//add_action( 'wp_enqueue_scripts', [ $this, 'bp_enqueue_styles' ] );
-
-		// // add support for home portfolio carousesl image size
+		// add support for home portfolio carousesl image size \\
 		 add_action( 'init', [ $this, 'odevice_image_sizes' ] );
 
 		 // WordPress block actions \\
-		add_action( 'init', [ $this, 'brs_create_block' ] );
+		add_action( 'init', [ $this, 'bp_create_block' ] );
+		add_filter( 'register_post_type_args', [ $this, 'brs_add_cpts_to_api' ], 10, 2 );
 
 	}
 
@@ -111,6 +108,7 @@ class rothman_portfolio {
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'page',
+			'show_in_rest'			=> true,
 		);
 		register_post_type( 'portfolio_item', $args );}
 
@@ -125,8 +123,9 @@ class rothman_portfolio {
 
 		$bp_metabox = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
-			'title'         => esc_html__( 'Portfolio Data', 'cmb2' ),
-			'object_types'  => array( 'portfolio_item' ), // Post type
+			'title'         => esc_html__( 'Data', 'cmb2' ),
+			'object_types'  => 'portfolio_item', // Post type
+			'show_in_rest' => WP_REST_Server::READABLE
 		) );
 
 
@@ -249,40 +248,6 @@ class rothman_portfolio {
 				$content .= '</div>'; // CLOSE PORTFOLIO ROW
 		}
 
-		// // The Loop
-		// if ( $posts->have_posts() ) {
-		// 	$row_counter = 0;
-
-		// 	while ( $posts->have_posts() ) {
-		// 		$posts->the_post();
-
-		// 		if ( $row_counter % 3 == 0 ) {
-		// 			$content .= '<div class="bp_portfolio_row col-md-12">'; // OPEN PORTFOLIO ROW
-		// 		}
-
-		// 		$content .= '<a href="' . get_permalink() . '">';
-				
-		// 		$content .= '<div class="col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-
-
-		// 			$content .= '<div id="portfolio_image_div">';
-		// 			$content .= get_the_post_thumbnail( get_the_ID(), 'large' );
-		// 			//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
-		// 		$content .= '</div>';
-
-		// 		$content .= '<p style="text-align: center;">' . get_the_title() . '</p>';
-
-		// 		$content .= '</div></a>';
-
-		// 		if ( $row_counter % 3 == 3 ) {
-		// 			$content .= '</div>'; // CLOSE PORTFOLIO ROW
-		// 		}
-
-		// 		$row_counter++;
-		// 	}
-
-		// 	wp_reset_postdata();}
-
 			$content .= '</div>';
 
 		return $content;
@@ -363,13 +328,15 @@ class rothman_portfolio {
 		wp_register_script( 'portfolio-script', plugins_url( 'library/js/brothman_portfolio.js', __FILE__ ), [ 'jquery' ] );
 		wp_enqueue_script( 'portfolio-script' );
 
+		wp_enqueue_script( 'index', plugin_dir_url( __FILE__) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
+
 		// CaroFredSel script.
-		wp_register_script( 'CarouFredSel-Script', plugins_url('library/js/jquery.carouFredSel-6.1.0-packed.js', __FILE__), [ 'jquery' ] );
-		wp_enqueue_script( 'CarouFredSel-Script' );
+		// wp_register_script( 'CarouFredSel-Script', plugins_url('library/js/jquery.carouFredSel-6.1.0-packed.js', __FILE__), [ 'jquery' ] );
+		// wp_enqueue_script( 'CarouFredSel-Script' );
 
 		// brothman_portfolio script
-		wp_register_script( 'brothman_portfolio_carousel_init', plugins_url('library/js/brothman_portfolio_init.js', __FILE__), [ 'jquery' ] );
-		wp_enqueue_script( 'brothman_portfolio_carousel_init' );
+		// wp_register_script( 'brothman_portfolio_carousel_init', plugins_url('library/js/brothman_portfolio_init.js', __FILE__), [ 'jquery' ] );
+		// wp_enqueue_script( 'brothman_portfolio_carousel_init' );
 
 		wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 
@@ -398,12 +365,19 @@ class rothman_portfolio {
 		//     add_image_size( 'home-size', 300, 100, true );
 		// }
 
+			//add this to your functions.php file in your theme folder
+	public function brs_add_cpts_to_api( $args, $post_type ) {
+		if ( 'result' === $post_type ) {
+		$args['show_in_rest'] = true;
+		}
+		return $args;
+		}
 
 
 	/* 
 	 * Add the block to the WordPress block editor
 	 */
-	public function brs_create_block() {
+	public function bp_create_block() {
 		register_block_type( __DIR__ . '/wordpress-block-react/build' );
 	}
 }

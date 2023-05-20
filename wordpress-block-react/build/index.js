@@ -27,7 +27,7 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
   }
   componentDidMount() {
     // Fetch the data from the URL
-    const theUrl = window.location.origin + "/wp-json/wp/v2/br_person?filter[orderby]=date&order=desc&per_page=5&post_status=published";
+    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed";
     fetch(theUrl).then(response => response.json()).then(response =>
     // set the posts to the state variable 'posts' in the second then()
     this.setState({
@@ -35,51 +35,39 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     }));
   }
   createRows = () => {
-    // declare the state variable as a constant
     const {
       posts
     } = this.state;
 
+    // declare the state variable as a constant
+
     // check if posts exists and has a non-zero length
     if (posts && posts.length) {
-      // declare k for the key outside of the loop
-      let k = 1;
       const listItems = posts.map((post, index) => this.createRow(post));
+      const logPosts = posts.map((post, index) => console.log(post));
       return listItems;
     }
-    return true;
+    return false;
   };
 
   // function to generate a row to display in the block for each staff member
   createRow(item) {
     let thePermalink = item.link;
-    let theName = item.cmb2.custom_fields.br_name;
-    let theBio = item.cmb2.custom_fields.br_bio;
-    let thePortrait = item.cmb2.custom_fields.br_portrait;
-    let theTitle = item.cmb2.custom_fields.br_title;
+    let featured_image = item._embedded['wp:featuredmedia'][0].source_url;
+    let image1 = item.cmb2.Brothman_Portfolio_metabox.Brothman_Portfolio_image1;
+    //   let theBio = item.cmb2.rothman_Portfolio_metabox.br_bio;
+    //   let thePortrait = item.cmb2.rothman_Portfolio_metabox.br_portrait;
+    let theTitle = item.title.rendered;
 
     // create the row for the post using the data entered into the fields on the dashboard \\
     let theRow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "staff-member-div",
-      style: "float:left; width: 100%"
+      class: "col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "{thePermalink}"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: "float: left;"
+      href: thePermalink
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      class: "staff-portrait",
-      src: "{thePortrait}",
-      style: "width: 124px; margin: 0px auto"
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-      class: "title-text",
-      style: "padding: 0px 0px 0px 0px!important; text-align: center;"
-    }, theTitle))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: "float: left;"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "name-text"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, theName)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "bio-text"
-    }, theBio)));
+      class: "portfolio-grid-box-image",
+      src: featured_image
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, theTitle)));
     return theRow;
   }
   render() {
@@ -140,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 function Edit() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team page (react)', 'example-dynamic'));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Portfolio Page', 'example-dynamic'));
 }
 
 /***/ }),
@@ -185,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App_js__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById('staff-block-react'));
+react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App_js__WEBPACK_IMPORTED_MODULE_6__["default"], null), document.getElementById('portfolio-block-react'));
 
 /**
  * Every block starts by registering a new block type definition.

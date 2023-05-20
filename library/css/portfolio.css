@@ -47,6 +47,7 @@
 .bp_portfolio_item_cell {
 	background: white;
 	text-align: center;
+	float: left;
 	margin-bottom: 50px;
 	transition-duration: 0.3s;
 	transition-property: transform;
@@ -219,6 +220,7 @@
   margin: 0px auto;
   background: white;
 }
+
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-width: 1186px) {
