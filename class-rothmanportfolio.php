@@ -1,11 +1,19 @@
 <?php
 /**
- * Plugin Name: brothman-portfolio
- * Plugin URI:  https://wordpress.org/plugins/chatpress
- * Description: Display full portfolio on own page and/or all of them on a carousel.  Also adds a single portfolio item page template.
+ * Rothman Portfolio
+ *
+ * @package     brothman-portfolio
+ * @author      Ben Rothman
+ * @copyright   2023 Ben Rothman
+ * @license     GPL-2.0+
+ *
+ * @wordpress-plugin
+ * Plugin Name: Rothman Portfolio
+ * Plugin URI:  https://www.benrothman.org
+ * Description: Just a simple WordPress plugin to display a full portfolio grid on a page where each item can be clicked into and examined.
  * Version:     1.1.0
  * Author:      Ben Rothman
- * Author URI:  http://www.BenRothman.org
+ * Author URI:  https://www.BenRothman.org
  * Text Domain: rportfolio
  * License:     GPL-2.0+
  **/
@@ -15,7 +23,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	exit;
 }
 
-class rothman_portfolio {
+class rothmanportfolio {
 
 	public function __construct() {
 
@@ -382,4 +390,4 @@ class rothman_portfolio {
 	}
 }
 
-new rothman_portfolio();
+new rothmanportfolio();
