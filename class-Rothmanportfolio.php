@@ -18,46 +18,53 @@
  * License:     GPL-2.0+
  **/
 
- // Prevent direct file access
-if ( ! defined ( 'ABSPATH' ) ) {
+ // Prevent direct file access.
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class rothmanportfolio {
+/**
+ * Rothmanportfolio class
+ *
+ * @since 0.1
+ */
+class Rothmanportfolio {
 
+	/**
+	 * Rothmanportfolio class constructor
+	 *
+	 * @since 0.1
+	 */
 	public function __construct() {
 
-		// register post type
-		add_action( 'init', [ $this, 'bp_register_portfolio_item_cpt' ], 0 );
+		// register post type.
+		add_action( 'init', array( $this, 'bp_register_portfolio_item_cpt' ), 0 );
 
-		// load and start CMB2
+		// load and start CMB2.
 		if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 			require_once dirname( __FILE__ ) . '/cmb2/init.php';
 		} elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
 			require_once dirname( __FILE__ ) . '/CMB2/init.php';
 		}
 
-		// // register and add the metaboxes to the portfolio item CPT
-		add_action( 'cmb2_init', [ $this, 'bp_register_metaboxes' ] );
+		// // register and add the metaboxes to the portfolio item CPT.
+		add_action( 'cmb2_init', array( $this, 'bp_register_metaboxes' ) );
 
-		// load styles
-		 add_action( 'wp_enqueue_scripts', [ $this, 'rp_enqueue_styles' ] );
+		// load styles.
+		 add_action( 'wp_enqueue_scripts', array( $this, 'rp_enqueue_styles' ) );
 
-		// register full portfolio  page shortcode
-		add_shortcode( 'portfolio_page', [ $this, 'bp_portfolio_page_shortcode' ] );
+		// register full portfolio  page shortcode.
+		add_shortcode( 'portfolio_page', array( $this, 'bp_portfolio_page_shortcode' ) );
 
-		// register full portfolio  page shortcode
-		// add_shortcode( 'portfolio_carousel', [ $this, 'rp_portfolio_carousel_shortcode' ] );
+		// use my single template for single portfolio-item.
+		 add_filter('template_include', array( $this, 'bp_include_template' ), 1);
 
-		// use my single template for single portfolio-item \\
-		 add_filter('template_include', [ $this, 'bp_include_template' ], 1);
+		// add support for home portfolio carousesl image size.
+		 add_action( 'init', array( $this, 'odevice_image_sizes' ) );
 
-		// add support for home portfolio carousesl image size \\
-		 add_action( 'init', [ $this, 'odevice_image_sizes' ] );
-
-		 // WordPress block actions \\
-		add_action( 'init', [ $this, 'bp_create_block' ] );
-		add_filter( 'register_post_type_args', [ $this, 'brs_add_cpts_to_api' ], 10, 2 );
+		 // WordPress block actions.
+		add_action( 'init', array( $this, 'bp_create_block' ) );
+		add_filter( 'register_post_type_args', array( $this, 'brs_add_cpts_to_api' ), 10, 2 );
 
 	}
 
@@ -132,7 +139,7 @@ class rothmanportfolio {
 		$bp_metabox = new_cmb2_box( array(
 			'id'            => $prefix . 'metabox',
 			'title'         => esc_html__( 'Data', 'cmb2' ),
-			'object_types'  => 'portfolio_item', // Post type
+			'object_types'  => 'portfolio_item',
 			'show_in_rest' => WP_REST_Server::READABLE
 		) );
 
@@ -201,7 +208,7 @@ class rothmanportfolio {
 		$rows = array_chunk($posts, 3);
 
 		foreach( $rows as $row ) {
-			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">'; // OPEN PORTFOLIO ROW
+			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">';
 
 
 
@@ -212,7 +219,6 @@ class rothmanportfolio {
 
 					$content .= '<div id="portfolio_image_div">';
 					$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
-					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
 				$content .= '</div>';
 
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[0]->ID) . '</p>';
@@ -221,17 +227,11 @@ class rothmanportfolio {
 
 				if (count($row) > 1) {
 				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
-				
 				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-
-
-					$content .= '<div id="portfolio_image_div">';
-					$content .= get_the_post_thumbnail( $row[1]->ID, 'large' );
-					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
+				$content .= '<div id="portfolio_image_div">';
+				$content .= get_the_post_thumbnail( $row[1]->ID, 'large' );
 				$content .= '</div>';
-
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[1]->ID) . '</p>';
-
 				$content .= '</div></a>';
 				}
 
@@ -243,7 +243,6 @@ class rothmanportfolio {
 
 					$content .= '<div id="portfolio_image_div">';
 					$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
-					//$content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
 				$content .= '</div>';
 
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[2]->ID) . '</p>';
@@ -253,7 +252,7 @@ class rothmanportfolio {
 
 
 
-				$content .= '</div>'; // CLOSE PORTFOLIO ROW
+				$content .= '</div>';
 		}
 
 			$content .= '</div>';
@@ -275,60 +274,57 @@ class rothmanportfolio {
 	 *
 	 * @since 0.1
 	 */
-		public function rp_portfolio_carousel_shortcode() {
+	public function rp_portfolio_carousel_shortcode() {
 
 
-			$content = '<div id="wrapper">';
-				$content .= '<div id="carousel">';
+		$content = '<div id="wrapper">';
+			$content .= '<div id="carousel">';
 
-							$items = new WP_Query( [
-							'post_type' => 'portfolio_item',
-							'orderby'=>'date',
-							'posts_per_page' => -1,
-							'order'=>'DESC',
-							'category_name' => 'Website',
-							'post_status' => 'publish',
-							] );
+						$items = new WP_Query( [
+						'post_type' => 'portfolio_item',
+						'orderby'=>'date',
+						'posts_per_page' => -1,
+						'order'=>'DESC',
+						'category_name' => 'Website',
+						'post_status' => 'publish',
+						] );
 
-							if ( $items->have_posts() ) {
-								while ( $items->have_posts() ) {
-									$items->the_post();
+						if ( $items->have_posts() ) {
+							while ( $items->have_posts() ) {
+								$items->the_post();
 
-									$content .= '<div>';
-										$content .= '<a href="' . get_permalink() . '">';
-											//$content .= get_the_post_thumbnail( get_the_ID() );
-											// $content .= '<img src="' . get_post_meta( get_the_ID(), 'Brothman_Portfolio_image1', true ) . '" width="240" height="150" >';
-											$content .= get_the_post_thumbnail( get_the_ID(), 'home-size' );
-											//	$content .= '<a href="' . get_permalink() . '">';
-										$content .= '</a>';
-									$content .= '</div>';
+								$content .= '<div>';
+									$content .= '<a href="' . get_permalink() . '">';
+										$content .= get_the_post_thumbnail( get_the_ID(), 'home-size' );
+										//	$content .= '<a href="' . get_permalink() . '">';
+									$content .= '</a>';
+								$content .= '</div>';
 
-								}
-								/* Restore original Post Data */
-								wp_reset_postdata();
-							} else {
-								// no posts found
 							}
-
-				$content .= '</div>';
-
-				$content .= '<div id="nav">';
-					$content .= '<a id="prev" href="#">&laquo; Prev</a>';
-					$content .= '<a id="next" href="#">Next &raquo;</a>';
-				$content .= '</div>';
+							/* Restore original Post Data */
+							wp_reset_postdata();
+						} else {
+							// no posts found
+						}
 
 			$content .= '</div>';
 
-			return $content;
-		}
+			$content .= '<div id="nav">';
+				$content .= '<a id="prev" href="#">&laquo; Prev</a>';
+				$content .= '<a id="next" href="#">Next &raquo;</a>';
+			$content .= '</div>';
 
-		/**
+		$content .= '</div>';
+
+		return $content;
+	}
+
+	/**
 	 * Callback function to enqueue stylesheets and scripts for this plugin
 	 *
 	 * @since 0.1
 	 */
 	public function rp_enqueue_styles() {
-
 		// my custom styles.
 		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ) );
 
@@ -338,49 +334,32 @@ class rothmanportfolio {
 
 		wp_enqueue_script( 'index', plugin_dir_url( __FILE__) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
 
-		// CaroFredSel script.
-		// wp_register_script( 'CarouFredSel-Script', plugins_url('library/js/jquery.carouFredSel-6.1.0-packed.js', __FILE__), [ 'jquery' ] );
-		// wp_enqueue_script( 'CarouFredSel-Script' );
-
-		// brothman_portfolio script
-		// wp_register_script( 'brothman_portfolio_carousel_init', plugins_url('library/js/brothman_portfolio_init.js', __FILE__), [ 'jquery' ] );
-		// wp_enqueue_script( 'brothman_portfolio_carousel_init' );
-
 		wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
-
 	}
 
-		/**
-		 * Function used to force the site to use my custom templpate for the single 'portfolio_item' page.
-		 *
-		 * @since 0.1
-		 */
-		public function bp_include_template( $template_path ) {
-
-			if( get_post_type() == 'portfolio_item' ) {
-					$theme_file = plugin_dir_path( __FILE__ ) . 'single-portfolio_item.php';
-					$template_path = $theme_file;
-			}
-			return $template_path;
-		
-			}
-
 	/**
-	* Function to create theme support to serve smaller images for portfolio carousel
-	* @since 1.0
-	*/
-		// public function odevice_image_sizes() {
-		//     add_image_size( 'home-size', 300, 100, true );
-		// }
+	 * Function used to force the site to use my custom templpate for the single 'portfolio_item' page.
+	 *
+	 * @since 0.1
+	 */
+	public function bp_include_template( $template_path ) {
+		if ( get_post_type() == 'portfolio_item' ) {
+				$theme_file = plugin_dir_path( __FILE__ ) . 'single-portfolio_item.php';
+				$template_path = $theme_file;
+		}
 
-			//add this to your functions.php file in your theme folder
+		return $template_path;
+	
+		}
+
+	//add this to your functions.php file in your theme folder
 	public function brs_add_cpts_to_api( $args, $post_type ) {
 		if ( 'result' === $post_type ) {
-		$args['show_in_rest'] = true;
-		}
-		return $args;
+			$args['show_in_rest'] = true;
 		}
 
+		return $args;
+	}
 
 	/* 
 	 * Add the block to the WordPress block editor
@@ -390,4 +369,4 @@ class rothmanportfolio {
 	}
 }
 
-new rothmanportfolio();
+new Rothmanportfolio();
