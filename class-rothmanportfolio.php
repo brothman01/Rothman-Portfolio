@@ -195,19 +195,20 @@ class Rothmanportfolio {
 	/**
 	 * Callback function to be executed when the portfolio page shortcode is used
 	 *
+	 * @param $atts: array of all of the shortcode attributes to be used with the current shortcode
+	 * 
 	 * @since 0.1
 	 */
 	public function bp_portfolio_page_shortcode( $atts ) {
-
 		$atts = shortcode_atts(
-	       array(
-	        'category' => 'Website',
-	    ), $atts, '$atts');
+		array(
+			'category' => 'Website',
+		), $atts, '$atts');
 
 		$the_category = $atts['category'];
 
 
-	    $content = '<div class="portfolio_container" style="width: 80%!important; margin: 0px auto;">';
+		$content = '<div class="portfolio_container" style="width: 80%!important; margin: 0px auto;">';
 
 		$args = [ 'post_type' => 'portfolio_item',
 		'orderby'=>'date',
@@ -224,20 +225,13 @@ class Rothmanportfolio {
 		foreach( $rows as $row ) {
 			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">';
 
-
-
 			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
-				
-				$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-
-
-					$content .= '<div id="portfolio_image_div">';
-					$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
-				$content .= '</div>';
-
-				$content .= '<p style="text-align: center;">' . get_the_title( $row[0]->ID) . '</p>';
-
-				$content .= '</div></a>';
+			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+			$content .= '<div id="portfolio_image_div">';
+			$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
+			$content .= '</div>';
+			$content .= '<p style="text-align: center;">' . get_the_title( $row[0]->ID) . '</p>';
+			$content .= '</div></a>';
 
 				if (count($row) > 1) {
 				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
@@ -251,21 +245,13 @@ class Rothmanportfolio {
 
 			if (count($row) > 2) {
 				$content .= '<a href="' . get_permalink( $row[2]->ID ) . '">';
-				
 				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-
-
-					$content .= '<div id="portfolio_image_div">';
-					$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
+				$content .= '<div id="portfolio_image_div">';
+				$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
 				$content .= '</div>';
-
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[2]->ID) . '</p>';
-
 				$content .= '</div></a>';
 			}
-
-
-
 				$content .= '</div>';
 		}
 
@@ -279,9 +265,9 @@ class Rothmanportfolio {
 	* Function to create theme support to serve smaller images for portfolio carousel
 	* @since 1.0
 	*/
-		public function odevice_image_sizes() {
-		    add_image_size( 'home-size', 300, 100, true );
-		}
+	public function odevice_image_sizes() {
+		add_image_size( 'home-size', 300, 100, true );
+	}
 
 	/**
 	 * Callback function to be executed when the portfolio carousel shortcode is used
@@ -346,8 +332,10 @@ class Rothmanportfolio {
 		wp_register_script( 'portfolio-script', plugins_url( 'library/js/brothman_portfolio.js', __FILE__ ), [ 'jquery' ] );
 		wp_enqueue_script( 'portfolio-script' );
 
+		// enqueue the react to be used on the front end.
 		wp_enqueue_script( 'index', plugin_dir_url( __FILE__) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
-
+		
+		// enqueue bootstrap
 		wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 	}
 
