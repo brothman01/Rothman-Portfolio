@@ -203,7 +203,7 @@ class Rothmanportfolio {
 		$atts = shortcode_atts(
 			array(
 				'category' => 'Website',
-			), 
+			),
 			$atts,
 			'$atts'
 		);
@@ -214,8 +214,8 @@ class Rothmanportfolio {
 
 		$args = array(
 			'post_type'      => 'portfolio_item',
-			'orderby'        =>'date',
-			'order'          =>'DESC',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 			'posts_per_page' => -1,
 			'category_name'  => 'Website',
 			'post_status'    => 'publish',
@@ -227,16 +227,15 @@ class Rothmanportfolio {
 
 		foreach ( $rows as $row ) {
 			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">';
-
 			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
 			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 			$content .= '<div id="portfolio_image_div">';
 			$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
 			$content .= '</div>';
-			$content .= '<p style="text-align: center;">' . get_the_title( $row[0]->ID) . '</p>';
+			$content .= '<p style="text-align: center ">' . get_the_title( $row[0]->ID) . '</p>';
 			$content .= '</div></a>';
 
-				if (count($row) > 1) {
+			if ( count( $row ) > 1 ) {
 				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
 				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 				$content .= '<div id="portfolio_image_div">';
@@ -244,9 +243,9 @@ class Rothmanportfolio {
 				$content .= '</div>';
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[1]->ID) . '</p>';
 				$content .= '</div></a>';
-				}
+			}
 
-			if (count($row) > 2) {
+			if ( count( $row ) > 2 ) {
 				$content .= '<a href="' . get_permalink( $row[2]->ID ) . '">';
 				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 				$content .= '<div id="portfolio_image_div">';
@@ -255,7 +254,8 @@ class Rothmanportfolio {
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[2]->ID) . '</p>';
 				$content .= '</div></a>';
 			}
-				$content .= '</div>';
+
+			$content .= '</div>';
 		}
 
 			$content .= '</div>';

@@ -80,7 +80,7 @@
 		<?php if ( $images[4] != NULL ) { ?>
 		<div class="bp_singlepage_thumbnail_div">
 			<div class="bp_trim_thumbnail">
-				<img class="bp_portfolio_item_selector_image" src="<?php echo $images[4]; ?> " />
+				<img class="bp_portfolio_item_selector_image" src="<?php echo esc_html( $images[4] ); ?> " />
 			</div>
 		</div>
 		<?php } ?>
