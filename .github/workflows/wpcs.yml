@@ -13,3 +13,5 @@ jobs:
         - uses: actions/checkout@v3
         - name: WPCS check
           uses: 10up/wpcs-action@stable
+          with:
+            excludes: 'wordpress-block-react'
