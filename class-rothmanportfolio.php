@@ -109,7 +109,7 @@ class Rothmanportfolio {
 			'description'           => __( 'Post Type Description', 'brothman_portfolio' ),
 			'labels'                => $labels,
 			'supports'              => array( 'title', 'editor', 'comments', 'thumbnail' ),
-			'taxonomies'            => array( 'category', 'post_tag', ),
+			'taxonomies'            => array( 'category', 'post_tag' ),
 			'hierarchical'          => false,
 			'public'                => true,
 			'show_ui'               => true,
@@ -123,9 +123,10 @@ class Rothmanportfolio {
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'page',
-			'show_in_rest'          => true
+			'show_in_rest'          => true,
 		);
-		register_post_type( 'portfolio_item', $args );}
+		register_post_type( 'portfolio_item', $args );
+	}
 
 
 	/**
@@ -141,44 +142,55 @@ class Rothmanportfolio {
 				'id'            => $prefix . 'metabox',
 				'title'         => esc_html__( 'Data', 'cmb2' ),
 				'object_types'  => 'portfolio_item',
-				'show_in_rest'  => WP_REST_Server::READABLE
+				'show_in_rest'  => WP_REST_Server::READABLE,
 			)
 		);
 
+		$bp_metabox->add_field(
+			array(
+				'name' => esc_html__( 'Image 1', 'cmb2' ),
+				'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
+				'id'   => $prefix . 'image1',
+				'type'       => 'file',
+			)
+		);
 
-		$bp_metabox->add_field( array(
-			'name' => esc_html__( 'Image 1', 'cmb2' ),
-			'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
-			'id'   => $prefix . 'image1',
-			'type'       => 'file',
-		) );
-		$bp_metabox->add_field( array(
-			'name' => esc_html__( 'Image 1', 'cmb2' ),
-			'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
-			'id'   => $prefix . 'image2',
-			'type'       => 'file',
-		) );
+		$bp_metabox->add_field(
+			array(
+				'name' => esc_html__( 'Image 1', 'cmb2' ),
+				'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
+				'id'   => $prefix . 'image2',
+				'type'       => 'file',
+			)
+		);
 
-		$bp_metabox->add_field( array(
-			'name' => esc_html__( 'Image 2', 'cmb2' ),
-			'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
-			'id'   => $prefix . 'image3',
-			'type'       => 'file',
-		) );
+		$bp_metabox->add_field(
+			array(
+				'name' => esc_html__( 'Image 2', 'cmb2' ),
+				'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
+				'id'   => $prefix . 'image3',
+				'type'       => 'file',
+			)
+		);
 
-		$bp_metabox->add_field( array(
-			'name' => esc_html__( 'Image 3', 'cmb2' ),
-			'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
-			'id'   => $prefix . 'image4',
-			'type'       => 'file',
-		) );
+		$bp_metabox->add_field(
+			array(
+				'name' => esc_html__( 'Image 3', 'cmb2' ),
+				'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
+				'id'   => $prefix . 'image4',
+				'type'       => 'file',
+			)
+		);
 
-		$bp_metabox->add_field( array(
-			'name' => esc_html__( 'Image 4', 'cmb2' ),
-			'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
-			'id'   => $prefix . 'image5',
-			'type'       => 'file',
-		) );}
+		$bp_metabox->add_field(
+			array(
+				'name' => esc_html__( 'Image 4', 'cmb2' ),
+				'desc' => esc_html__( 'Upload an image or enter a URL.', 'cmb2' ),
+				'id'   => $prefix . 'image5',
+				'type'       => 'file',
+			)
+		);
+	}
 
 	/**
 	 * Callback function to be executed when the portfolio page shortcode is used
