@@ -195,34 +195,37 @@ class Rothmanportfolio {
 	/**
 	 * Callback function to be executed when the portfolio page shortcode is used
 	 *
-	 * @param $atts: array of all of the shortcode attributes to be used with the current shortcode
-	 * 
+	 * @param array $atts: of all of the shortcode attributes to be used with the current shortcode
+	 *
 	 * @since 0.1
 	 */
 	public function bp_portfolio_page_shortcode( $atts ) {
 		$atts = shortcode_atts(
-		array(
-			'category' => 'Website',
-		), $atts, '$atts');
+			array(
+				'category' => 'Website',
+			), 
+			$atts,
+			'$atts'
+		);
 
 		$the_category = $atts['category'];
 
-
 		$content = '<div class="portfolio_container" style="width: 80%!important; margin: 0px auto;">';
 
-		$args = [ 'post_type' => 'portfolio_item',
-		'orderby'=>'date',
-		'order'=>'DESC',
-		'posts_per_page' => -1,
-		'category_name' => 'Website',
-		'post_status' => 'publish',
-		];
+		$args = array(
+			'post_type'      => 'portfolio_item',
+			'orderby'        =>'date',
+			'order'          =>'DESC',
+			'posts_per_page' => -1,
+			'category_name'  => 'Website',
+			'post_status'    => 'publish',
+		);
 
 		$posts = get_posts( $args );
 
-		$rows = array_chunk($posts, 3);
+		$rows = array_chunk( $posts, 3 );
 
-		foreach( $rows as $row ) {
+		foreach ( $rows as $row ) {
 			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">';
 
 			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
