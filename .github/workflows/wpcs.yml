@@ -1,9 +1,6 @@
 name: WPCS check
 
-on:
-  push:
-    branches:
-      - main-addworkflow
+on: push
 
 jobs:
   phpcs:
