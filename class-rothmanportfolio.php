@@ -51,16 +51,16 @@ class Rothmanportfolio {
 		add_action( 'cmb2_init', array( $this, 'bp_register_metaboxes' ) );
 
 		// load styles.
-		 add_action( 'wp_enqueue_scripts', array( $this, 'rp_enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'rp_enqueue_styles' ) );
 
 		// register full portfolio  page shortcode.
 		add_shortcode( 'portfolio_page', array( $this, 'bp_portfolio_page_shortcode' ) );
 
 		// use my single template for single portfolio-item.
-		 add_filter('template_include', array( $this, 'bp_include_template' ), 1);
+		add_filter( 'template_include', array( $this, 'bp_include_template' ), 1 );
 
 		// add support for home portfolio carousesl image size.
-		 add_action( 'init', array( $this, 'odevice_image_sizes' ) );
+		add_action( 'init', array( $this, 'odevice_image_sizes' ) );
 
 		 // WordPress block actions.
 		add_action( 'init', array( $this, 'bp_create_block' ) );
@@ -119,11 +119,11 @@ class Rothmanportfolio {
 			'show_in_nav_menus'     => true,
 			'can_export'            => true,
 			'has_archive'           => true,
-			'show_in_rest'					=> true,
+			'show_in_rest'          => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
 			'capability_type'       => 'page',
-			'show_in_rest'			=> true,
+			'show_in_rest'          => true
 		);
 		register_post_type( 'portfolio_item', $args );}
 
@@ -136,12 +136,14 @@ class Rothmanportfolio {
 	public function bp_register_metaboxes() {
 		$prefix = 'Brothman_Portfolio_';
 
-		$bp_metabox = new_cmb2_box( array(
-			'id'            => $prefix . 'metabox',
-			'title'         => esc_html__( 'Data', 'cmb2' ),
-			'object_types'  => 'portfolio_item',
-			'show_in_rest' => WP_REST_Server::READABLE
-		) );
+		$bp_metabox = new_cmb2_box(
+			array(
+				'id'            => $prefix . 'metabox',
+				'title'         => esc_html__( 'Data', 'cmb2' ),
+				'object_types'  => 'portfolio_item',
+				'show_in_rest'  => WP_REST_Server::READABLE
+			)
+		);
 
 
 		$bp_metabox->add_field( array(
