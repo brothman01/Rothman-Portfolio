@@ -193,9 +193,9 @@ class Rothmanportfolio {
 	}
 
 	/**
-	 * Callback function to be executed when the portfolio page shortcode is used
+	 * Callback function to be executed when the portfolio page shortcode is used.
 	 *
-	 * @param array $atts: of all of the shortcode attributes to be used with the current shortcode
+	 * @param (array) $atts : of all of the shortcode attributes to be used with the current shortcode.
 	 *
 	 * @since 0.1
 	 */
@@ -264,10 +264,11 @@ class Rothmanportfolio {
 
 	}
 
-	/**
-	* Function to create theme support to serve smaller images for portfolio carousel
-	* @since 1.0
-	*/
+/**
+ * Function to create theme support to serve smaller images for portfolio 
+ * 
+ * @since 1.0
+ */
 	public function odevice_image_sizes() {
 		add_image_size( 'home-size', 300, 100, true );
 	}
@@ -299,7 +300,6 @@ class Rothmanportfolio {
 								$content .= '<div>';
 									$content .= '<a href="' . get_permalink() . '">';
 										$content .= get_the_post_thumbnail( get_the_ID(), 'home-size' );
-										//	$content .= '<a href="' . get_permalink() . '">';
 									$content .= '</a>';
 								$content .= '</div>';
 
@@ -307,7 +307,7 @@ class Rothmanportfolio {
 							/* Restore original Post Data */
 							wp_reset_postdata();
 						} else {
-							// no posts found
+							// no posts found.
 						}
 
 			$content .= '</div>';
@@ -338,13 +338,15 @@ class Rothmanportfolio {
 		// enqueue the react to be used on the front end.
 		wp_enqueue_script( 'index', plugin_dir_url( __FILE__) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
 		
-		// enqueue bootstrap
+		// enqueue bootstrap.
 		wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css');
 	}
 
 	/**
 	 * Function used to force the site to use my custom templpate for the single 'portfolio_item' page.
 	 *
+	 * @param obj $template_path : The object passed in by WordPress representing the template path.
+	 * 
 	 * @since 0.1
 	 */
 	public function bp_include_template( $template_path ) {
@@ -357,7 +359,14 @@ class Rothmanportfolio {
 	
 		}
 
-	//add this to your functions.php file in your theme folder
+	/** Overides the declarations of every CPT to make sure they are all have endpoints in the REST API.
+	 * 
+	 * @param array  $args : array of all args for the current CPT.
+	 * 
+	 * @param string $post_type : the name of the CPT.
+	 * 
+	 * @since 0.1
+	 */
 	public function brs_add_cpts_to_api( $args, $post_type ) {
 		if ( 'result' === $post_type ) {
 			$args['show_in_rest'] = true;
@@ -366,7 +375,7 @@ class Rothmanportfolio {
 		return $args;
 	}
 
-	/* 
+	/** 
 	 * Add the block to the WordPress block editor
 	 */
 	public function bp_create_block() {

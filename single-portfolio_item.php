@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Template Name: Portfolio Item
  * Template Post Type: portfolio_item
  */
@@ -24,12 +24,7 @@
 					</div>
 					<?php
 
-					// If comments are open or we have at least one comment, load up the comment template.
-					//if ( comments_open() ) {
-
-
-
-				endwhile; // End of the loop.
+				endwhile;
 			?>
 
 	<?php
