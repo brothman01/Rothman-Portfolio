@@ -45,16 +45,13 @@ class App extends React.Component {
 
   }
 
-  return false;
+  return <p>There are no items to render.</p>;
 }
 
 // function to generate a row to display in the block for each staff member
 createRow(item) {
   let thePermalink = item.link;
   let featured_image = item._embedded['wp:featuredmedia'][0].source_url;
-  let image1 = item.cmb2.Brothman_Portfolio_metabox.Brothman_Portfolio_image1;
-//   let theBio = item.cmb2.rothman_Portfolio_metabox.br_bio;
-//   let thePortrait = item.cmb2.rothman_Portfolio_metabox.br_portrait;
   let theTitle = item.title.rendered;
 
   // create the row for the post using the data entered into the fields on the dashboard \\
@@ -71,6 +68,7 @@ createRow(item) {
 }
 
   render() {
+
     return (
       <div>
         {this.createRows()}
