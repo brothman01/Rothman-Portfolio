@@ -22,17 +22,18 @@ get_header();  ?>
 	</div>
 
 				<?php
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) {
+					the_post();
 
 					get_template_part( 'template-parts/post/content', get_post_format() );
 
 					?>
 					<div style="overflow: hidden; margin-bottom: 5%;">
-						<?php echo esc_html( get_the_content() ); ?>
+						<?php echo wp_kses_post( get_the_content() ); ?>
 					</div>
 					<?php
 
-				endwhile;
+				}
 				?>
 
 	<?php

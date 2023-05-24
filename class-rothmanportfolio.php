@@ -349,7 +349,7 @@ class Rothmanportfolio {
 	 */
 	public function bp_include_template( $template_path ) {
 		if ( get_post_type() === 'portfolio_item' ) {
-				$theme_file    = plugin_dir_path( __FILE__ ) . 'single-portfolio_item.php';
+				$theme_file    = plugin_dir_path( __FILE__ ) . 'single-portfolio-item.php';
 				$template_path = $theme_file;
 		}
 

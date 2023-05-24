@@ -17,6 +17,10 @@
    margin-bottom: 3px;
 }
 
+#portfolio_image_div:hover {
+	display: inherit;
+} 
+
 .portfolio_container {
 	width: 100%;
 	margin: 0px auto;
@@ -168,9 +172,6 @@
 	padding-top: 20px !important;
 	padding-bottom: 20px !important;
 	float: left;
-}
-#carousel {
-
 }
 
 #carousel div {
