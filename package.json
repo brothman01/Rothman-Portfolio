@@ -9,6 +9,7 @@
 		"build": "git submodule update --init"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.1.0"
+		"@wordpress/scripts": "^26.1.0",
+		"react": "^18.0.0"
 	}
 }
