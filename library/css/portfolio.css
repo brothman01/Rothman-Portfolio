@@ -120,11 +120,11 @@
 	margin: 0 auto;
 }
 
-.bp_portfolio_item_selected_image {
+.bp-portfolio-item-selected-image {
 	border: solid var(--highlight-color);
 }
 
-.bp-portfolio-item-selector-image:not(.bp_portfolio_item_selected_image):hover {
+.bp-portfolio-item-selector-image:not(.bp-portfolio-item-selected-image):hover {
 	opacity: 0.4;
 }
 
@@ -185,37 +185,34 @@
 	float: right;
 }
 
-#prev, #next {
+#prev,
+#next {
 	text-decoration: none;
 	color: #000;
 	font-size: 1.5em;
 }
 
-#prev:hover, #next:hover {
+#prev:hover,
+#next:hover {
 	text-decoration: none;
 	color: #f00;
 }
 
-#prev.disabled, #next.disabled {
-	color: #5A5A5A;
+#prev.disabled,
+#next.disabled {
+	color: #5a5a5a;
 	cursor: default;
 }
 
-#prev.disabled:hover, #next.disabled:hover {
+#prev.disabled:hover,
+#next.disabled:hover {
 	color: #808080;
 	cursor: default;
 }
 
-#content_container {
-	padding-top: 1px;
-	width: 80%;
-	margin: 0 auto;
-	background: #fff;
-}
-
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width:1186px) {
+@media only screen and (max-width: 1186px) {
 
 	.bp-portfolio-item-cell {
 		margin: 0 !important;
@@ -225,7 +222,7 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width: 480px) {
 
 	.bp-singlepage-portfolio-item-huge-image {
 		background-size: 100%;

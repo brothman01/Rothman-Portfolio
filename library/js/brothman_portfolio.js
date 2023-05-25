@@ -10,10 +10,10 @@ $( document ).ready( function() {
 	});
 
 	$( 'body' ).on( 'click', '.bp-portfolio-item-selector-image', function() {
-		$( 'body' ).find( '.bp_portfolio_item_selected_image' ).removeClass( 'bp_portfolio_item_selected_image' );
-		$( this ).addClass( 'bp_portfolio_item_selected_image' );
+		$( 'body' ).find( '.bp-portfolio-item-selected-image' ).removeClass( 'bp-portfolio-item-selected-image' );
+		$( this ).addClass( 'bp-portfolio-item-selected-image' );
 
-		var new_image = $( '.bp_portfolio_item_selected_image' ).attr('src');
+		var new_image = $( '.bp-portfolio-item-selected-image' ).attr('src');
 		$( '.bp_singlepage_portfolio_item_huge_image img' ).attr( 'src', new_image );
 	});
 

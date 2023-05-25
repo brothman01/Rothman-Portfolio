@@ -52,7 +52,7 @@ get_header();  ?>
 		<?php if ( null !== $images[0] && count( array_filter( $images ) ) > 1 ) { ?>
 		<div class="bp-singlepage-thumbnail-div">
 				<div class="bp-trim-thumbnail">
-					<img class="bp-portfolio-item-selector-image bp_portfolio_item_selected_image" src="<?php echo esc_html( $images[0] ); ?> " />
+					<img class="bp-portfolio-item-selector-image bp-portfolio-item-selected-image" src="<?php echo esc_html( $images[0] ); ?> " />
 				</div>
 		</div>
 		<?php } ?>
