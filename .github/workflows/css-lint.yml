@@ -10,3 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions-hub/stylelint@master
+
+    with:
+      excludes: 'wordpress-block-react/node_modules'
