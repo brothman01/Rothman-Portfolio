@@ -1,7 +1,6 @@
 # Rothman-Portfolio
 [![WPCS check](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/wpcs.yml/badge.svg?branch=main)](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/wpcs.yml)[![License](https://img.shields.io/badge/license-GPL--2.0-brightgreen.svg)](https://github.com/brothman01/wp-monitor/blob/master/license.txt) [![PHP >= 8.0](https://img.shields.io/badge/php-%3E=%208.0-8892bf.svg)](https://secure.php.net/supported-versions.php) [![WordPress >= 6.2](https://img.shields.io/badge/wordpress-%3E=%206.2-blue.svg)](https://wordpress.org/download/release-archive/)  
 
-*** REQUIRES CMB2 ***<br />
 A plugin I created for my personal site to display my portfolio in an intuitive way for users to enjoy.<br />
 <br />
 ## How To Use:
