@@ -50,41 +50,41 @@ get_header();  ?>
 	<div id="bp-thumbnail-selector-row">
 
 		<?php if ( null !== $images[0] && count( array_filter( $images ) ) > 1 ) { ?>
-		<div class="bp_singlepage_thumbnail_div">
-				<div class="bp_trim_thumbnail">
-					<img class="bp_portfolio_item_selector_image bp_portfolio_item_selected_image" src="<?php echo esc_html( $images[0] ); ?> " />
+		<div class="bp-singlepage-thumbnail-div">
+				<div class="bp-trim-thumbnail">
+					<img class="bp-portfolio-item-selector-image bp_portfolio_item_selected_image" src="<?php echo esc_html( $images[0] ); ?> " />
 				</div>
 		</div>
 		<?php } ?>
 
 		<?php if ( null !== $images[1] ) { ?>
-			<div class="bp_singlepage_thumbnail_div">
-				<div class="bp_trim_thumbnail">
-					<img class="bp_portfolio_item_selector_image" src="<?php echo esc_html( $images[1] ); ?> " />
+			<div class="bp-singlepage-thumbnail-div">
+				<div class="bp-trim-thumbnail">
+					<img class="bp-portfolio-item-selector-image" src="<?php echo esc_html( $images[1] ); ?> " />
 				</div>
 		</div>
 		<?php } ?>
 
 		<?php if ( null !== $images[2] ) { ?>
-			<div class="bp_singlepage_thumbnail_div">
-				<div class="bp_trim_thumbnail">
-					<img class="bp_portfolio_item_selector_image" src="<?php echo esc_html( $images[2] ); ?> " />
+			<div class="bp-singlepage-thumbnail-div">
+				<div class="bp-trim-thumbnail">
+					<img class="bp-portfolio-item-selector-image" src="<?php echo esc_html( $images[2] ); ?> " />
 				</div>
 			</div>
 		<?php } ?>
 
 		<?php if ( null !== $images[3] ) { ?>
-			<div class="bp_singlepage_thumbnail_div">
-				<div class="bp_trim_thumbnail">
-					<img class="bp_portfolio_item_selector_image" src="<?php echo esc_html( $images[3] ); ?> " />
+			<div class="bp-singlepage-thumbnail-div">
+				<div class="bp-trim-thumbnail">
+					<img class="bp-portfolio-item-selector-image" src="<?php echo esc_html( $images[3] ); ?> " />
 		</div>
 			</div>
 		<?php } ?>
 
 		<?php if ( null !== $images[4] ) { ?>
-		<div class="bp_singlepage_thumbnail_div">
-			<div class="bp_trim_thumbnail">
-				<img class="bp_portfolio_item_selector_image" src="<?php echo esc_html( $images[4] ); ?> " />
+		<div class="bp-singlepage-thumbnail-div">
+			<div class="bp-trim-thumbnail">
+				<img class="bp-portfolio-item-selector-image" src="<?php echo esc_html( $images[4] ); ?> " />
 			</div>
 		</div>
 			<?php

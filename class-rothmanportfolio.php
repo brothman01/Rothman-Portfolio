@@ -229,7 +229,7 @@ class Rothmanportfolio {
 		foreach ( $rows as $row ) {
 			$content .= '<div class="bp-portfolio-row prevent-select col-md-12">';
 			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
-			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 			$content .= '<div id="portfolio-image-div">';
 			$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
 			$content .= '</div>';
@@ -238,7 +238,7 @@ class Rothmanportfolio {
 
 			if ( count( $row ) > 1 ) {
 				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
-				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 				$content .= '<div id="portfolio-image-div">';
 				$content .= get_the_post_thumbnail( $row[1]->ID, 'large' );
 				$content .= '</div>';
@@ -248,7 +248,7 @@ class Rothmanportfolio {
 
 			if ( count( $row ) > 2 ) {
 				$content .= '<a href="' . get_permalink( $row[2]->ID ) . '">';
-				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
 				$content .= '<div id="portfolio-image-div">';
 				$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
 				$content .= '</div>';

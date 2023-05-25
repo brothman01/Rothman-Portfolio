@@ -47,7 +47,7 @@
 }
 
 .bp-portfolio-item-cell {
-	background: #FFF;
+	background: #fff;
 	text-align: center;
 	float: left;
 	margin: 30px;
@@ -82,53 +82,53 @@
 
 .bp-portfolio-item-cell a img {
 	max-width: 160px !important;
-	margin: 0px auto;
+	margin: 0 auto;
 }
 
 
-.bp_portfolio_item_page_image {
+.bp-portfolio-item-page-image {
 	height: 200px !important;
 	padding-bottom: 10px;
 
 }
 
 
-.bp_singlepage_thumbnail_div {
+.bp-singlepage-thumbnail-div {
 	border: solid #000 1px;
 	width: 20%;
 	height: 200px;
 	padding-top: 25px;
 	overflow-y: hidden;
-	background: #FFF;
+	background: #fff;
 	display: table-cell;
 	vertical-align: middle;
-    text-align: center;
+	text-align: center;
 }
 
-.bp_singlepage_thumbnail_div .bp_trim_thumbnail {
+.bp-singlepage-thumbnail-div .bp-trim-thumbnail {
 	display: inline-block;
-	max-height:150px;
-    width: 75%;
-    overflow: hidden;
-	margin: 0px auto;
+	max-height: 150px;
+	width: 75%;
+	overflow: hidden;
+	margin: 0 auto;
 }
 
-.bp_portfolio_item_selector_image {
+.bp-portfolio-item-selector-image {
 	width: 75%;
 	transition: opacity 1s ease;
 	cursor: pointer;
-	margin: 0px auto;
+	margin: 0 auto;
 }
 
 .bp_portfolio_item_selected_image {
 	border: solid var(--highlight-color);
 }
 
-.bp_portfolio_item_selector_image:not(.bp_portfolio_item_selected_image):hover {
+.bp-portfolio-item-selector-image:not(.bp_portfolio_item_selected_image):hover {
 	opacity: 0.4;
 }
 
-.bp_singlepage_portfolio_item_huge_image {
+.bp-singlepage-portfolio-item-huge-image {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -158,12 +158,6 @@
 	width: 100%;
 	height: 200px;
 
-}
-.caroufredsel_wrapper {
-	margin-top: -25px !important;
-	padding-top: 20px !important;
-	padding-bottom: 20px !important;
-	float: left;
 }
 
 #carousel div {
@@ -210,7 +204,7 @@
 	padding-top: 1px;
 	width: 80%;
 	margin: 0px auto;
-	background: #FFF;
+	background: #fff;
 }
 
 
@@ -218,8 +212,8 @@
 @media only screen and (max-width: 1186px) {
 
 	.bp-portfolio-item-cell {
-		margin-left: 0px!important;
-		margin:0px!important;
+		margin-left: 0px !important;
+		margin:0px !important;
 	}
 
 }
@@ -227,7 +221,7 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (max-width : 480px) {
 
-	.bp_singlepage_portfolio_item_huge_image {
+	.bp-singlepage-portfolio-item-huge-image {
 		background-size: 100%;
 		background-position: center middle!important;
 	}
@@ -236,11 +230,11 @@
 		display: inline;
 	}
 
-	.bp_singlepage_thumbnail_div  .bp_trim_thumbnail {
+	.bp-singlepage-thumbnail-div  .bp-trim-thumbnail {
 		display: inline-block;
 	}
 
-	.bp_singlepage_thumbnail_div {
+	.bp-singlepage-thumbnail-div {
 		text-align: center;
 		display: block;
 		width: 100%;
