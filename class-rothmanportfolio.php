@@ -211,7 +211,7 @@ class Rothmanportfolio {
 
 		$the_category = $atts['category'];
 
-		$content = '<div class="portfolio_container" style="width: 80%!important; margin: 0px auto;">';
+		$content = '<div class="portfolio-container" style="width: 80%!important; margin: 0px auto;">';
 
 		$args = array(
 			'post_type'      => 'portfolio_item',
@@ -227,10 +227,10 @@ class Rothmanportfolio {
 		$rows = array_chunk( $posts, 3 );
 
 		foreach ( $rows as $row ) {
-			$content .= '<div class="bp_portfolio_row prevent-select col-md-12">';
+			$content .= '<div class="bp-portfolio-row prevent-select col-md-12">';
 			$content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
-			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-			$content .= '<div id="portfolio_image_div">';
+			$content .= '<div class="col-lg-3 col-md-2 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+			$content .= '<div id="portfolio-image-div">';
 			$content .= get_the_post_thumbnail( $row[0]->ID, 'large' );
 			$content .= '</div>';
 			$content .= '<p style="text-align: center ">' . get_the_title( $row[0]->ID ) . '</p>';
@@ -238,8 +238,8 @@ class Rothmanportfolio {
 
 			if ( count( $row ) > 1 ) {
 				$content .= '<a href="' . get_permalink( $row[1]->ID ) . '">';
-				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-				$content .= '<div id="portfolio_image_div">';
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+				$content .= '<div id="portfolio-image-div">';
 				$content .= get_the_post_thumbnail( $row[1]->ID, 'large' );
 				$content .= '</div>';
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[1]->ID ) . '</p>';
@@ -248,8 +248,8 @@ class Rothmanportfolio {
 
 			if ( count( $row ) > 2 ) {
 				$content .= '<a href="' . get_permalink( $row[2]->ID ) . '">';
-				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp_portfolio_item_cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
-				$content .= '<div id="portfolio_image_div">';
+				$content .= '<div class="col-lg-3 col-md-3 col-sm-12 bp-portfolio-item-cell" style="float: left; overflow-y: hidden; margin-bottom: 20px;">';
+				$content .= '<div id="portfolio-image-div">';
 				$content .= get_the_post_thumbnail( $row[2]->ID, 'large' );
 				$content .= '</div>';
 				$content .= '<p style="text-align: center;">' . get_the_title( $row[2]->ID ) . '</p>';
