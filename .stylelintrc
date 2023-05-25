@@ -3,8 +3,5 @@
    "../../wordpress-block-react/node_modules/**/*.css",
    "../../wordpress-block-react/build/*.css",
  ],
- "extends": "stylelint-config-standard",
- "rules": {
-  "indentation": 2
- }
+ "extends": "@wordpress/stylelint-config"
 }
