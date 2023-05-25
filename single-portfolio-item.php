@@ -47,7 +47,7 @@ get_header();  ?>
 	?>
 
 <?php if ( null !== $images[0] && count( array_filter( $images ) ) > 1 ) { ?>
-	<div id="bp_thumbnail_selector_row">
+	<div id="bp-thumbnail-selector-row">
 
 		<?php if ( null !== $images[0] && count( array_filter( $images ) ) > 1 ) { ?>
 		<div class="bp_singlepage_thumbnail_div">
