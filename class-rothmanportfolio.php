@@ -127,6 +127,7 @@ class Rothmanportfolio {
 			'show_in_rest'        => true,
 		);
 		register_post_type( 'portfolio_item', $args );
+
 	}
 
 
