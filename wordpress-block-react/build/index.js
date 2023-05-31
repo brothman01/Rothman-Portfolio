@@ -58,7 +58,7 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
 
     // create the row for the post using the data entered into the fields on the dashboard \\
     let theRow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell"
+      class: "col-lg-3 col-md-2 col-sm-12 bp-portfolio-item-cell"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: thePermalink
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
