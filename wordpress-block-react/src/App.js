@@ -55,7 +55,7 @@ createRow(item) {
   let theTitle = item.title.rendered;
 
   // create the row for the post using the data entered into the fields on the dashboard \\
-  let theRow = <div class="col-lg-3 col-md-2 col-sm-12 bp_portfolio_item_cell">
+  let theRow = <div class="col-lg-3 col-md-2 col-sm-12 bp-portfolio-item-cell">
 
 							<a href={thePermalink}>
 									<img class="portfolio-grid-box-image" src={featured_image} />
