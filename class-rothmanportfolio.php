@@ -2,7 +2,7 @@
 /**
  * Rothman Portfolio
  *
- * @category  WordPress_Plugin
+ * @category  WordPressPlugin
  * @package   Brothman-portfolio
  * @author    Ben Rothman <Ben@BenRothman.org>
  * @copyright 2023 Ben Rothman
@@ -21,7 +21,9 @@
 
 // Prevent direct file access.
 if ( ! defined( 'ABSPATH' ) ) {
+
 	exit;
+
 }
 
 /**
@@ -137,6 +139,7 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function bp_register_metaboxes() {
+
 		$prefix = 'Brothman_Portfolio_';
 
 		$bp_metabox = new_cmb2_box(
@@ -192,6 +195,7 @@ class Rothmanportfolio {
 				'type' => 'file',
 			)
 		);
+
 	}
 
 	/**
@@ -202,6 +206,7 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function bp_portfolio_page_shortcode( $atts ) {
+
 		$atts = shortcode_atts(
 			array(
 				'category' => 'Website',
@@ -272,7 +277,9 @@ class Rothmanportfolio {
 	 * @since 1.0
 	 */
 	public function odevice_image_sizes() {
+
 		add_image_size( 'home-size', 300, 100, true );
+
 	}
 
 	/**
@@ -281,6 +288,7 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function rp_portfolio_carousel_shortcode() {
+
 		$content      = '<div id="wrapper">';
 			$content .= '<div id="carousel">';
 
@@ -319,6 +327,7 @@ class Rothmanportfolio {
 		$content .= '</div>';
 
 		return $content;
+
 	}
 
 	/**
@@ -327,6 +336,7 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function rp_enqueue_styles() {
+
 		// my custom styles.
 		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ), array(), '1.0.0' );
 
@@ -339,6 +349,7 @@ class Rothmanportfolio {
 
 		// enqueue bootstrap.
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', array(), '1.0.0' );
+
 	}
 
 	/**
@@ -349,6 +360,7 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function bp_include_template( $template_path ) {
+
 		if ( get_post_type() === 'portfolio_item' ) {
 				$theme_file    = plugin_dir_path( __FILE__ ) . 'single-portfolio-item.php';
 				$template_path = $theme_file;
@@ -367,19 +379,24 @@ class Rothmanportfolio {
 	 * @since 0.1
 	 */
 	public function brs_add_cpts_to_api( $args, $post_type ) {
+
 		if ( 'result' === $post_type ) {
 			$args['show_in_rest'] = true;
 		}
 
 		return $args;
+
 	}
 
 	/**
 	 * Add the block to the WordPress block editor
 	 */
 	public function bp_create_block() {
+
 		register_block_type( __DIR__ . '/wordpress-block-react/build' );
+
 	}
+
 }
 
 new Rothmanportfolio();
