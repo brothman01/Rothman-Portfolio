@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import spinner from './assets/spinner.gif';
 
 class App extends React.Component {
 
   constructor( props ) {
     super( props );
     this.state = {
-      posts: []
+      posts: [],
+      showSpinner: true
     };
   }
+
 
   componentDidMount() {
         // Fetch the data from the URL
@@ -20,6 +23,8 @@ class App extends React.Component {
           })
         )
       }
+
+
 
   createRows = () => {
         const { posts } = this.state;
@@ -69,11 +74,20 @@ createRow(item) {
 
   render() {
 
+    if ( ! this.state.showSpinner ) {
     return (
-      <div>
+      <div className="portfolio-page">
         {this.createRows()}
       </div>
     );
+    } else {
+      return (
+        <div className="portfolio-page md-col-12">
+            <img src={spinner} style={{ margin: '0px auto' }} alt="Spinner" />
+        </div>
+      );
+    }
+
   }
 }
 
