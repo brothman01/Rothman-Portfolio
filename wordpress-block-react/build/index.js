@@ -29,6 +29,15 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     };
   }
   componentDidMount() {
+    // start the timer for the spinner display
+    console.log('timer start');
+    this.timer = setInterval(() => {
+      this.setState({
+        showSpinner: false
+      });
+      console.log('timer fires');
+    }, 3000);
+
     // Fetch the data from the URL
     const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed";
     fetch(theUrl).then(response => response.json()).then(response =>
@@ -41,8 +50,6 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     const {
       posts
     } = this.state;
-
-    // declare the state variable as a constant
 
     // check if posts exists and has a non-zero length
     if (posts && posts.length) {
@@ -71,11 +78,7 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
     return theRow;
   }
   render() {
-    if (!this.state.showSpinner) {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "portfolio-page"
-      }, this.createRows());
-    } else {
+    if (this.state.showSpinner == true) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "portfolio-page md-col-12"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -85,6 +88,11 @@ class App extends (react__WEBPACK_IMPORTED_MODULE_1___default().Component) {
         },
         alt: "Spinner"
       }));
+    } else {
+      clearInterval(this.timer);
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "portfolio-page"
+      }, this.createRows());
     }
   }
 }
