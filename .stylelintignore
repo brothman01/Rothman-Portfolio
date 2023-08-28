@@ -3,5 +3,4 @@ CMB2
 dist
 test
 vendor
-wordpress*
 *.js
