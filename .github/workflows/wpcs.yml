@@ -1,6 +1,6 @@
 name: WPCS check
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   phpcs:
@@ -12,3 +12,4 @@ jobs:
           uses: 10up/wpcs-action@develop
           with:
             excludes: 'wordpress-block-react'
+            repo_branch: 'main'
