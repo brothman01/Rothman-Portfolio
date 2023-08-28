@@ -12,4 +12,3 @@ jobs:
           uses: 10up/wpcs-action@develop
           with:
             excludes: 'wordpress-block-react'
-            repo_branch: 'main'
