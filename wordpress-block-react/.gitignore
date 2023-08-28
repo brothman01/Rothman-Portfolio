@@ -28,3 +28,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# the build items
+wordpress-block-react/build
+wordpress-block-react/build/*

@@ -1,1 +1,3 @@
 node_modules
+wordpress-block-react/build
+wordpress-block-react/build/*
