@@ -9,7 +9,7 @@ jobs:
       steps:
         - uses: actions/checkout@v3
         - name: WPCS check
-          uses: 10up/wpcs-action@stable
+          uses: 10up/wpcs-action@develop
           with:
             excludes: 'wordpress-block-react'
             repo_branch: 'main'
