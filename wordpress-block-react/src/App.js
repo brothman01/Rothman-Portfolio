@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.scss';
 import spinner from './assets/spinner.gif';
 
 class App extends React.Component {
@@ -14,10 +15,8 @@ class App extends React.Component {
 
   componentDidMount() {
     // start the timer for the spinner display
-    console.log('timer start');
     this.timer = setInterval(() => {
       this.setState({showSpinner: false})
-      console.log('timer fires');
     }, 3000);
 
     // Fetch the data from the URL
@@ -75,20 +74,29 @@ class App extends React.Component {
   }
 
   render() {
-    if ( this.state.showSpinner == true ) {
+      // clearInterval(this.timer);
+      var divStyle = {
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%'
+      };
+      
+      
       return (
         <div className="portfolio-page md-col-12">
-            <img src={spinner} style={{ margin: '0px auto' }} alt="Spinner" />
+          <div className="portfolio-container">
+          { true == this.state.showSpinner &&
+          <div className="spinner-div" style={divStyle}>
+              <img src={spinner} style={{ margin: '0px auto' }} alt="Spinner" />
+            </div>
+          }
+            <div style={{ visibility: this.state.showSpinner ? 'hidden' : 'visible' }}>
+              {this.createRows()}
+            </div>
+          </div>
         </div>
       );
-    } else {
-      clearInterval(this.timer);
-      return (
-        <div className="portfolio-page">
-          {this.createRows()}
-        </div>
-      );
-    }
 
   }
 }
