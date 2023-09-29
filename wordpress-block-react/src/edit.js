@@ -1,58 +1,59 @@
-/**
- * WordPress dependencies
- */
-import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
+import {
+    useBlockProps,
+    RichText,
+    InspectorControls
+} from '@wordpress/block-editor';
 
-/**
- * Internal dependencies
- */
-import './editor.scss';
+import {
+    TextControl,
+    ToggleControl,
+    PanelBody,
+    PanelRow
+} from '@wordpress/components';
 
-/**
- * Edit Component
- */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+
+    const blockProps = useBlockProps();
+
     return (
-        <div {...useBlockProps()}>
-            {__(
-                'Inspector Control Groups Block',
-                'inspector-control-groups'
-            )}
-            <InspectorControls group="color">
-                <div className="full-width-control-wrapper">
-                    {__(
-                        "I'm in the colors group!",
-                        'inspector-control-groups'
-                    )}
-                    < input type="text" />
-                </div>
+        <>
+            <InspectorControls>
+                <PanelBody title="Cool Settings" initialOpen={false}>
+                    <PanelRow>
+                        <TextControl
+                            label="List ID"
+                            onChange={(list_id) => setAttributes({ list_id })}
+                            value={attributes.list_id}
+                        />
+                    </PanelRow>
+                    <PanelRow>
+                        <ToggleControl
+                            label="Double Opt In"
+                            onChange={() => setAttributes({ doubleoptin: !attributes.doubleoptin })}
+                            checked={attributes.doubleoptin}
+                        />
+                    </PanelRow>
+                </PanelBody>
             </InspectorControls>
-            <InspectorControls group="typography">
-                <div className="full-width-control-wrapper">
-                    {__(
-                        "I'm in the typography group!",
-                        'inspector-control-groups'
-                    )}
-                </div>
-            </InspectorControls>
-            <InspectorControls group="dimensions">
-                <div className="full-width-control-wrapper">
-                    {__(
-                        "I'm in the dimensions group!",
-                        'inspector-control-groups'
-                    )}
-                </div>
-            </InspectorControls>
-            <InspectorControls group="border">
-                <div className="full-width-control-wrapper">
-                    {__(
-                        "I'm in the border group!",
-                        'inspector-control-groups'
-                    )}
-                </div>
-            </InspectorControls>
-        </div>
-    );
+            <div {...blockProps}>
+                <RichText
+                    tagName="h3"
+                    value={attributes.heading}
+                    allowedFormats={['core/bold', 'core/italic']}
+                    onChange={(heading) => setAttributes({ heading })}
+                    placeholder="Enter heading here..."
+                />
+                <p>
+                    <span>Email address</span>
+                    <RichText
+                        tagName="span"
+                        value={attributes.buttonText}
+                        allowedFormats={[]}
+                        onChange={(buttonText) => setAttributes({ buttonText })}
+                        placeholder="Button text..."
+                    />
+                </p>
+            </div>
+        </>
+    )
 }
