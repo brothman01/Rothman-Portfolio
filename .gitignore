@@ -1,6 +1,7 @@
 node_modules
 composer.lock
 package-lock.json
+wordpress-block-react/.DS_Store
 wordpress-block-react/build
 wordpress-block-react/build/*
 wordpress-block-react/node_modules

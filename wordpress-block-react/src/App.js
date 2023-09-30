@@ -6,10 +6,16 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
+
+        const list_id = props.list_id;
+
         this.state = {
             posts: [],
             showSpinner: true
         };
+
+        console.log('The list id is:');
+        console.log(list_id);
     }
 
 
@@ -74,6 +80,7 @@ class App extends React.Component {
     }
 
     render() {
+        // clearInterval(this.timer);
         var divStyle = {
             top: '0',
             left: '0',

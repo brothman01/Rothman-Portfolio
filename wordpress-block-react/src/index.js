@@ -21,7 +21,12 @@ import Edit from './edit';
 import metadata from './block.json';
 import App from './App.js';
 
-	ReactDOM.render(<App />, document.getElementById('portfolio-block-react'));
+const reactApp = document.getElementById('portfolio-block-react');
+
+const list_id = reactApp.dataset.listId;
+const doubleoptin = '';
+
+ReactDOM.render(<App list_id={list_id} doubleOptIn={doubleoptin} />, reactApp);
 
 
 /**
@@ -29,9 +34,3 @@ import App from './App.js';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
-} );

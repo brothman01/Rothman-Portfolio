@@ -8,6 +8,23 @@ A plugin I created for my personal site to display my portfolio in an intuitive 
 2. The administrator adds the portfolio page using a block written with react or shortcodes written in PHP depending on their preference.  The block queries the database for all posts of type "Portfolio Item" and diplays that data in a visually-pleasing grid on the page where the block or shortcode was added.
 3. (only if installing from github) Execute the command `git submodule update --init ` from the project root folder to update to the latest version of CMB2.
 
+## Changelog
+
+### 1.0.0
+A plugin is born!
+
+### 1.0.1
+Added a block or shortcode choice to display portfolio page.
+
+### 1.0.2
+Added automated testing
+
+### 1.0.3
+Fixed the automated workflows.
+
+### 1.0.4
+Added block fields whose attributes can be used in the react block.
+
 ## FAQ
 ### How many images can be displayed for a specific portfolio item?
 Items have the main image displayed in the grid (the featured image) and up to 5 thumbnail images that users can view while looking at the specific item.
