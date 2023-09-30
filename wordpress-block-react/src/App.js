@@ -49,10 +49,6 @@ class App extends React.Component {
                 this.createRow(post)
             );
 
-            const logPosts = posts.map((post, index) =>
-                console.log(post)
-            );
-
             return listItems;
 
         }
