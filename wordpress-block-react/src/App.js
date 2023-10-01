@@ -19,6 +19,8 @@ class App extends React.Component {
       this.setState({showSpinner: false})
     }, 3000);
 
+
+  // NOT WORKING EITHER A) ADD HEADERS TO REQUEST OR B CHANGE THE URL TO NOT USE TO MANY PARAMS
     // Fetch the data from the URL
     const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed";
     fetch(theUrl)
