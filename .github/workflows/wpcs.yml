@@ -11,5 +11,5 @@ jobs:
         - name: WPCS check
           uses: 10up/wpcs-action@develop
           with:
-            excludes: 'wordpress-block-react'
+            excludes: 'wordpress-block'
             repo_branch: 'main'

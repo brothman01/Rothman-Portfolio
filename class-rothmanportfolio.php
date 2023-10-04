@@ -349,7 +349,7 @@ class Rothmanportfolio {
 
 		// enqueue the react to be used on the front end.
 
-		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
+		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block/build/index.js', array( 'wp-element' ), '1.0.0', true );
 		wp_localize_script(
 			'index',
 			'vars',
@@ -405,7 +405,7 @@ class Rothmanportfolio {
 	 */
 	public function bp_create_block() {
 
-		register_block_type( __DIR__ . '/wordpress-block-react/build' );
+		register_block_type( __DIR__ . '/wordpress-block/build' );
 
 	}
 
