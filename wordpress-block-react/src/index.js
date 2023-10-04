@@ -22,16 +22,3 @@ import metadata from './block.json';
 import App from './App.js';
 
 	ReactDOM.render(<App />, document.getElementById('portfolio-block-react'));
-
-
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
-} );

@@ -20,8 +20,9 @@ class App extends React.Component {
     }, 3000);
 
     // Fetch the data from the URL
-    const theUrl = window.location.origin + "/wp-json/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed";
-    fetch(theUrl)
+    fetch(vars.rest_url, {
+      method : 'get',
+    })
     .then(response => response.json())
     .then(response => // set the posts to the state variable 'posts' in the second then()
       this.setState({
@@ -41,10 +42,6 @@ class App extends React.Component {
 
       const listItems = posts.map( ( post, index ) =>
         this.createRow(post)
-      );
-
-      const logPosts = posts.map( ( post, index ) =>
-        console.log(post)
       );
 
       return listItems;
@@ -74,13 +71,16 @@ class App extends React.Component {
   }
 
   render() {
-      // clearInterval(this.timer);
       var divStyle = {
         top: '0',
         left: '0',
         width: '100%',
         height: '100%'
       };
+
+      if ( false == this.state.showSpinner ) {
+        clearInterval(this.timer);
+      }
       
       
       return (

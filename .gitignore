@@ -1,3 +1,8 @@
+vendor
+vendor/*
+vendor/**
+composer.lock
+package-lock.json
 node_modules
 wordpress-block-react/build
 wordpress-block-react/build/*
