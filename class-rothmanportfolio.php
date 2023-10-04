@@ -26,6 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
+/* Require Composer autoloader */
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+
 /**
  * Rothmanportfolio class
  *
@@ -44,10 +47,10 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_register_portfolio_item_cpt' ), 0 );
 
 		// load and start CMB2.
-		if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/cmb2/init.php';
-		} elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/CMB2/init.php';
+		if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2/init.php' ) ) {
+			require_once dirname( __FILE__ ) . '/vendor/cmb2/init.php';
+		} elseif ( file_exists( dirname( __FILE__ ) . '/vendor/CMB2/init.php' ) ) {
+			require_once dirname( __FILE__ ) . '/vendor/CMB2/init.php';
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT.
