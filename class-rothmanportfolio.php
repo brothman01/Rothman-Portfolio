@@ -348,10 +348,12 @@ class Rothmanportfolio {
 
 		// enqueue the react to be used on the front end.
 		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
-		wp_localize_script( 'index', 'vars',
-		array( 
-			'rest_url' => get_rest_url('api', '/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed'),
-		) );
+		wp_localize_script( 'index',
+			'vars',
+			array(
+				'rest_url' => get_rest_url( 'api', '/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed' ),
+			)
+		);
 		wp_enqueue_script( 'index' );
 
 		// enqueue bootstrap.
