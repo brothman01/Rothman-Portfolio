@@ -26,8 +26,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
-
 /**
  * Rothmanportfolio class
  *
@@ -46,10 +44,10 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_register_portfolio_item_cpt' ), 0 );
 
 		// load and start CMB2.
-		if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/cmb2/init.php';
-		} elseif ( file_exists( dirname( __FILE__ ) . '/vendor/CMB2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/CMB2/init.php';
+		if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
+			require_once dirname( __FILE__ ) . '/cmb2/init.php';
+		} elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
+			require_once dirname( __FILE__ ) . '/CMB2/init.php';
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT.
@@ -347,15 +345,7 @@ class Rothmanportfolio {
 		wp_enqueue_script( 'portfolio-script' );
 
 		// enqueue the react to be used on the front end.
-		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
-		wp_localize_script(
-			'index',
-			'vars',
-			array(
-				'rest_url' => get_rest_url( 'api', '/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed' ),
-			)
-		);
-		wp_enqueue_script( 'index' );
+		wp_enqueue_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
 
 		// enqueue bootstrap.
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', array(), '1.0.0' );
