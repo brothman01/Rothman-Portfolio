@@ -352,7 +352,7 @@ class Rothmanportfolio {
 			'index',
 			'vars',
 			array(
-				'rest_url' => get_rest_url( 'api', '/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed' ),
+				'rest_url' => get_rest_url( null, '/wp/v2/portfolio_item?filter[orderby]=date&order=desc&per_page=50&post_status=published&_embed' ),
 			)
 		);
 		wp_enqueue_script( 'index' );
