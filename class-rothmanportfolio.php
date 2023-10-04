@@ -355,7 +355,6 @@ class Rothmanportfolio {
 			)
 		);
 		wp_enqueue_script( 'index' );
-  
 
 		// enqueue bootstrap.
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', array(), '1.0.0' );
