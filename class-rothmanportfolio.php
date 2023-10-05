@@ -15,7 +15,7 @@
  * Version:     1.3.0
  * Author:      Ben Rothman
  * Author URI:  https://www.BenRothman.org
- * Text Domain: rportfolio
+ * Text Domain: Rothman-Portfolio
  * License:     GPL-2.0+
  **/
 
