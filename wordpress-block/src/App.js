@@ -43,10 +43,6 @@ class App extends React.Component {
         this.createRow(post)
       );
 
-      const logPosts = posts.map( ( post, index ) =>
-        console.log(post)
-      );
-
       return listItems;
 
     }
@@ -74,13 +70,16 @@ class App extends React.Component {
   }
 
   render() {
-      // clearInterval(this.timer);
       var divStyle = {
         top: '0',
         left: '0',
         width: '100%',
         height: '100%'
       };
+
+      if (this.state.showSpinner === false) {
+        clearInterval(this.timer);
+      }
       
       
       return (

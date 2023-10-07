@@ -10,6 +10,11 @@
 	"supports": {
 		"html": false 
 	},
+	"attributes": {
+        "yourId": {
+            "type": "string"
+        }
+	},
 	"textdomain": "example-dynamic",
 	"editorScript": "file:./editor.js",
 	"editorStyle": "file:./index.css",

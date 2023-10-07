@@ -29,12 +29,16 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const blockprops = useBlockProps();
+	var clientId = blockprops.id;
+	setAttributes({ yourId: clientId });
+
 	return (
 		<p { ...useBlockProps() }>
-			{ __(
+			{__(
 				'Portfolio Page',
-				'example-dynamic'
+				'portfolio-block'
 			) }
 		</p>
 	);
