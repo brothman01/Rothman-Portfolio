@@ -21,9 +21,9 @@ import Edit from './edit';
 import metadata from './block.json';
 import App from './App.js';
 
-	var slides = document.getElementsByClassName("portfolio-block");
+	var blocks = document.getElementsByClassName("portfolio-block");
 	for (var i = 0; i < slides.length; i++) {
-		ReactDOM.render(<App />, slides.item(i));
+		ReactDOM.render(<App />, blocks.item(i));
 	}
 
 
