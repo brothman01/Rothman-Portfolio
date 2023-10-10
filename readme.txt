@@ -13,7 +13,7 @@ Rothman Portfolio
 
 == Description ==
 
-Place a beautiful grid on your site displaying all of your design or development work.  Show a series of related pieces together or different angles of the same thing.
+Place a beautiful grid on your site displaying all of your work.  Show a series of related pieces together or different angles of the same thing.
 
 
 == How To Install ==
@@ -29,6 +29,11 @@ Place a beautiful grid on your site displaying all of your design or development
 1.  Download the plugin from the WordPress plugins repository
 2.  Unzip the zip file and upload the folder to the wp-content/plugins/ directory
 3.  Activate Rothman Portfolio through the "Plugins" menu in WordPress
+
+
+== How to Configure ==
+The shortcode is shown at the top of the portfolio item edit screen and can be copied into a shortcode block to display the portfolio.  If you prefer using a block you can edit a page, add a new block and choose 'Portfolio Page' to render a beautiful grid displaying all of the available works.
+
 
 == Frequently Asked Questions ==
 

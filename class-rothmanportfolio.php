@@ -72,7 +72,20 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_create_block' ) );
 		add_filter( 'register_post_type_args', array( $this, 'brs_add_cpts_to_api' ), 10, 2 );
 
+		add_action( 'all_admin_notices', [ $this, 'wpse64933_add_posttype_note' ] );
 	}
+
+	public function wpse64933_add_posttype_note() {
+    	global $post, $pagenow;
+		global $wp_query;
+
+		// You can use the global $post here
+		$slug = $pagenow . '?post_type=' . $wp_query->query_vars['post_type'];
+
+		if ( 'edit.php?post_type=portfolio_item' === $slug ) {
+			echo '<div class="notice notice-info" style="padding: 10px;">Shortcode: <input type="text" value="[portfolio_page]" readonly></input></div>';
+		}
+}
 
 	/**
 	 * Register the Portfolio item CPT
