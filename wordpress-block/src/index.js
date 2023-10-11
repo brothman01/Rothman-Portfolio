@@ -22,7 +22,7 @@ import metadata from './block.json';
 import App from './App.js';
 
 	var blocks = document.getElementsByClassName("portfolio-block");
-	for (var i = 0; i < slides.length; i++) {
+	for (var i = 0; i < blocks.length; i++) {
 		ReactDOM.render(<App />, blocks.item(i));
 	}
 
