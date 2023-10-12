@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/my-block",
+  "version": "0.1.0",
+  "title": "Portfolio Page",
+  "category": "embed",
+  "icon": "grid-view",
+  "description": "A block for displaying a portfolio grid with items that can be clicked into.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "yourId": {
+      "type": "string"
+    }
+  },
+  "textdomain": "example-dynamic",
+  "editorScript": "file:./editor.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

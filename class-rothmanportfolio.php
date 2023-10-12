@@ -12,10 +12,10 @@
  * Plugin Name: Rothman Portfolio
  * Plugin URI:  https://www.benrothman.org
  * Description: Just a simple WordPress plugin to display a full portfolio grid on a page where each item can be clicked into and examined.
- * Version:     1.3.0
+ * Version:     1.0.0
  * Author:      Ben Rothman
  * Author URI:  https://www.BenRothman.org
- * Text Domain: rportfolio
+ * Text Domain: Rothman-Portfolio
  * License:     GPL-2.0+
  **/
 
@@ -72,6 +72,22 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_create_block' ) );
 		add_filter( 'register_post_type_args', array( $this, 'brs_add_cpts_to_api' ), 10, 2 );
 
+		add_action( 'all_admin_notices', array( $this, 'bp_add_shortcode_field' ) );
+	}
+
+	/**
+	 * The callback function run to add the shortcode field to the portfolio items' edit page
+	 *
+	 * @since 1.0
+	 */
+	public function bp_add_shortcode_field() {
+		global $post, $pagenow;
+		global $wp_query;
+		$slug = $pagenow . '?post_type=' . $wp_query->query_vars['post_type'];
+
+		if ( 'edit.php?post_type=portfolio_item' === $slug ) {
+			echo '<div class="notice notice-info" style="padding: 10px;">Shortcode: <input type="text" value="[portfolio_page]" readonly></input></div>';
+		}
 	}
 
 	/**
@@ -349,7 +365,7 @@ class Rothmanportfolio {
 
 		// enqueue the react to be used on the front end.
 
-		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block-react/build/index.js', array( 'wp-element' ), '1.0.0', true );
+		wp_register_script( 'index', plugin_dir_url( __FILE__ ) . 'wordpress-block/build/index.js', array( 'wp-element' ), '1.0.0', true );
 		wp_localize_script(
 			'index',
 			'vars',
@@ -405,7 +421,7 @@ class Rothmanportfolio {
 	 */
 	public function bp_create_block() {
 
-		register_block_type( __DIR__ . '/wordpress-block-react/build' );
+		register_block_type( __DIR__ . '/wordpress-block/build' );
 
 	}
 

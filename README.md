@@ -2,6 +2,7 @@
 [![WPCS check](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/wpcs.yml/badge.svg?branch=main)](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/wpcs.yml)[![CSS Lint](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/css-lint.yml/badge.svg)](https://github.com/brothman01/Rothman-Portfolio/actions/workflows/css-lint.yml)[![License](https://img.shields.io/badge/license-GPL--2.0-brightgreen.svg)](https://github.com/brothman01/wp-monitor/blob/master/license.txt) [![PHP >= 8.2](https://img.shields.io/badge/php-%3E=%208.2-8892bf.svg)](https://secure.php.net/supported-versions.php) [![WordPress >= 6.3](https://img.shields.io/badge/wordpress-%3E=%206.3-blue.svg)](https://wordpress.org/download/release-archive/)  
 
 A plugin I created for my personal site to display my portfolio in an intuitive way for users to enjoy.<br />
+This block renders the entire page in a grid, **you cannot render just one item at this time**.  Just add this shortcode/block by itself to any page and it will use the entire row or page.
 <br />
 ## How To Use:
 1. The site administrator creates items of the "Portfolio Item" custom post type on the WordPress dashboard for each item they want to display.  Custom fields have been added to any posts of type "Portfolio Item" so that creating them and filling out their information is intuitive.
