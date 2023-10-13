@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.scss';
+import './style.css';
 import spinner from './assets/spinner.gif';
 
 class App extends React.Component {
