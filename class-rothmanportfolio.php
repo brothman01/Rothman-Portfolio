@@ -83,9 +83,13 @@ class Rothmanportfolio {
 	public function bp_add_shortcode_field() {
 		global $post, $pagenow;
 		global $wp_query;
-		$slug = $pagenow . '?post_type=' . $wp_query->query_vars['post_type'];
+		$part = $pagenow . '?post_type=';
+		
+		$end = array_key_exists( 'post_type',$wp_query->query_vars ) ? $wp_query->query_vars['post_type'] : 'null';
 
-		if ( 'edit.php?post_type=portfolio_item' === $slug ) {
+		$part .= $end;
+
+		if ( 'edit.php?post_type=portfolio_item' === $part ) {
 			echo '<div class="notice notice-info" style="padding: 10px;">Shortcode: <input type="text" value="[portfolio_page]" readonly></input></div>';
 		}
 	}
