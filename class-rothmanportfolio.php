@@ -84,8 +84,8 @@ class Rothmanportfolio {
 		global $post, $pagenow;
 		global $wp_query;
 		$part = $pagenow . '?post_type=';
-		
-		$end = array_key_exists( 'post_type',$wp_query->query_vars ) ? $wp_query->query_vars['post_type'] : 'null';
+
+		$end = array_key_exists( 'post_type', $wp_query->query_vars ) ? $wp_query->query_vars['post_type'] : 'null';
 
 		$part .= $end;
 

@@ -1,5 +1,5 @@
 === Rothman Portfolio ===
-Contributors: Ben Rothman
+Contributors: brothman01
 Plugin URI: https://benrothman.org
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
