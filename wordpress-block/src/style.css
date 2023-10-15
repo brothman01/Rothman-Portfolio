@@ -1,6 +1,6 @@
 /* Any block-specific styles that do not also apply to the shortcode */
 .test-div {
-	background: green;
+	background: rgb(7, 122, 30);
 	width: 24px;
-    height: 24px;
+	height: 24px;
 }
