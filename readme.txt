@@ -6,7 +6,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Tags: portfolio, grid, designer, developer, artist, photographer, click-thru, responsive
 Requires at least: 5.0
 Tested up to: 6.3
-Stable tag: 1.0.0
+Stable tag: 1.4.0
 Requires PHP: 7.2.0
 
 Rothman Portfolio
