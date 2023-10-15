@@ -12,7 +12,7 @@
  * Plugin Name: Rothman Portfolio
  * Plugin URI:  https://www.benrothman.org
  * Description: Just a simple WordPress plugin to display a full portfolio grid on a page where each item can be clicked into and examined.
- * Version:     1.0.0
+ * Version:     1.4.0
  * Author:      Ben Rothman
  * Author URI:  https://www.BenRothman.org
  * Text Domain: Rothman-Portfolio
