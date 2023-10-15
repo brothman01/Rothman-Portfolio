@@ -5,9 +5,8 @@ A plugin I created for my personal site to display my portfolio in an intuitive 
 This block renders the entire page in a grid, **you cannot render just one item at this time**.  Just add this shortcode/block by itself to any page and it will use the entire row or page.
 <br />
 ## How To Use:
-1. The site administrator creates items of the "Portfolio Item" custom post type on the WordPress dashboard for each item they want to display.  Custom fields have been added to any posts of type "Portfolio Item" so that creating them and filling out their information is intuitive.
-2. The administrator adds the portfolio page using a block written with react or shortcodes written in PHP depending on their preference.  The block queries the database for all posts of type "Portfolio Item" and diplays that data in a visually-pleasing grid on the page where the block or shortcode was added.
-3. (only if installing from github) Execute the command `git submodule update --init ` from the project root folder to update to the latest version of CMB2.
+1. The site administrator creates items of the "Portfolio Item" custom post type from the WordPress dashboard for each item they want to display.  Custom fields have been added to the posts so that creating them and filling out their information is intuitive.  The images shown in the grid are the "Featured Image' of that item.
+2. The administrator adds the portfolio page using a shortcode block and the shortcode or a native block written with react, both of which render the entire portfolio grid.  The block queries the database for all posts of type "Portfolio Item" and diplays that data in a visually-pleasing grid on the page where the shortcode or block was added.
 
 ## FAQ
 ### How many images can be displayed for a specific portfolio item?
