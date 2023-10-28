@@ -1,1 +1,0 @@
-!function(){"use strict";var o=window.wp.blocks,t=window.React,e=window.wp.i18n,r=window.wp.blockEditor,i=JSON.parse('{"u2":"create-block/my-block"}');(0,o.registerBlockType)(i.u2,{edit:function({attributes:o,setAttributes:i}){return i({yourId:(0,r.useBlockProps)().id}),(0,t.createElement)("p",{...(0,r.useBlockProps)()},(0,e.__)("Portfolio Page","portfolio-block"))}})}();
