@@ -21,11 +21,12 @@ import Edit from './edit';
 import metadata from './block.json';
 import App from './App.js';
 
-const yourId = 'js';
 
 	var blocks = document.getElementsByClassName("portfolio-block");
 	for (var i = 0; i < blocks.length; i++) {
-		ReactDOM.render(<App yourId="var set in js"/>, blocks.item(i));
+		const yourId = document.getElementsByClassName('portfolio-block')[i].attributes.yourId.textContent;
+
+		ReactDOM.render(<App yourId={yourId}/>, blocks.item(i));
 	}
 
 

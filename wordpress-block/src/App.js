@@ -10,9 +10,8 @@ class App extends React.Component {
       posts: [],
       showSpinner: true
     };
+    console.log('yourId:');
     console.log(props.yourId);
-    console.log('----');
-    console.log(props);
   }
 
 
