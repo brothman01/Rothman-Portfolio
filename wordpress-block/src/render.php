@@ -66,7 +66,9 @@ foreach ( $rows as $row ) {
     $content .= '</div>';
 
 ?>
-<div class="portfolio-block"  theHTML=<?php echo base64_encode( $content ); ?> data-counter="<?php echo $GLOBALS['counter']++;?>" data-id="<?php echo $attributes['yourId']; ?>" style="overflow: hidden; max-width: 100%!important">
+<div class="portfolio-block"  data-counter="<?php echo $GLOBALS['counter']++;?>" data-id="<?php echo $attributes['yourId']; ?>" style="overflow: hidden; max-width: 100%!important">
+
+<?php echo $content; ?>
 
 </div>
 </p>
