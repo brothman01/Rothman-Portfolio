@@ -10,8 +10,8 @@ class App extends React.Component {
       posts: [],
       showSpinner: true
     };
-    console.log('passThis:');
-    console.log(props.passThis);
+    console.log('theHTML:');
+    console.log(props.theHTML);
   }
 
 

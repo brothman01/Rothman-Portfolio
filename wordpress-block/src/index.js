@@ -17,28 +17,12 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import Edit from './edit';
-import metadata from './block.json';
 import App from './App.js';
 
 
 	var blocks = document.getElementsByClassName("portfolio-block");
 	for (var i = 0; i < blocks.length; i++) {
-		const passThis = document.getElementsByClassName('portfolio-block')[i].attributes.passThis.textContent;
+		const theHTML = document.getElementsByClassName('portfolio-block')[i].attributes.theHTML.textContent;
 
-		ReactDOM.render(<App passThis={passThis}/>, blocks.item(i));
+		ReactDOM.render(<App theHTML={theHTML}/>, blocks.item(i));
 	}
-
-
-
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
-} );
