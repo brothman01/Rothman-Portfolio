@@ -24,9 +24,9 @@ import App from './App.js';
 
 	var blocks = document.getElementsByClassName("portfolio-block");
 	for (var i = 0; i < blocks.length; i++) {
-		const yourId = document.getElementsByClassName('portfolio-block')[i].attributes.yourId.textContent;
+		const passThis = document.getElementsByClassName('portfolio-block')[i].attributes.passThis.textContent;
 
-		ReactDOM.render(<App yourId={yourId}/>, blocks.item(i));
+		ReactDOM.render(<App passThis={passThis}/>, blocks.item(i));
 	}
 
 
