@@ -1,8 +1,6 @@
 vendor
 vendor/*
 vendor/**
-composer.lock
-package-lock.json
 node_modules
 wordpress-block/build
 wordpress-block/build/*
