@@ -1,7 +1,7 @@
 {
 	"name": "portfolio-plugin",
 	"version": "1.4.0",
-	"description": "A plugin for my site to show my portfolio items.",
+	"description": "The point of this file is to lint my css.",
 	"author": "Ben Rothman",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
@@ -10,9 +10,6 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.1.0",
-		"@wordpress/stylelint-config": "^21.17.0",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
-		"typescript": "^2.8.0"
+		"@wordpress/stylelint-config": "^21.17.0"
 	}
 }
