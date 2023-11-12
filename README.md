@@ -8,8 +8,8 @@ This block renders the entire page in a grid, **you cannot render just one item 
 1. The site administrator creates items of the "Portfolio Item" custom post type from the WordPress dashboard for each item they want to display.  Custom fields have been added to the posts so that creating them and filling out their information is intuitive.  The images shown in the grid are the "Featured Image' of that item.
 2. The administrator adds the portfolio page using a shortcode block and the shortcode or a native block written with react, both of which render the entire portfolio grid.  The block queries the database for all posts of type "Portfolio Item" and diplays that data in a visually-pleasing grid on the page where the shortcode or block was added.
 
-## Download For Use From This Repo:
-If you download the plugin from the github repository to use on your site, unzip the folder into the 'plugins' folder, execute `composer install` and `npm install` in the root directory, then `cd` into the 'wordpress-block' directory and execute `npm install` then `npm run build`.
+## Instructions For Use From This Repo:
+If you download the plugin from this github repository directly to use on your site, unzip the folder into the 'plugins' folder, execute `composer install` and `npm install` in the root directory, then `cd` into the 'wordpress-block' directory and execute `npm install` then `npm run build`.
 
 ## FAQ
 ### How many images can be displayed for a specific portfolio item?
