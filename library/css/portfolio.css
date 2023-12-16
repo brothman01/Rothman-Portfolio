@@ -53,6 +53,10 @@
 	flex: 0 0 20%;
   }
 
+  .bp-portfolio-item-selected-image {
+	outline: solid #5472d2 5px;
+  }
+
   .bp-singlepage-thumbnail-div img {
 	height: 90%;
   }
@@ -158,12 +162,12 @@
 	/* CSS */
 	
   }
-  
+
   /* 
 	##Device = Most of the Smartphones Mobiles (Portrait)
 	##Screen = B/w 320px to 479px
   */
-  
+
   @media (min-width: 320px) and (max-width: 480px) {
 	
 	.portfolio_cell {
@@ -176,7 +180,6 @@
 	}
 	
   }
-  
 
 
   /* block theme override??? */

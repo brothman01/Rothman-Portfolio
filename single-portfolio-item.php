@@ -46,6 +46,7 @@ get_header();  ?>
 	array_push( $images, );
 	?>
 
+
 <?php if ( null !== $images[0] && count( array_filter( $images ) ) > 1 ) { ?>
 	<div class="bp-thumbnail-selector-row">
 
