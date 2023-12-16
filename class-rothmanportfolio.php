@@ -255,8 +255,8 @@ class Rothmanportfolio {
 		foreach ( $posts as $item ) {
 			// $content .= '<div class="bp-portfolio-row prevent-select col-md-12">';
 			// $content .= '<a href="' . get_permalink( $row[0]->ID ) . '">';
-			$content .= '<div class="portfolio_cell" data-url="' . get_permalink( $item->ID ) . '">';
-			$content .= '<div class="portfolio-image-div zoom">';
+			$content .= '<div class="portfolio_cell zoom" data-url="' . get_permalink( $item->ID ) . '">';
+			$content .= '<div class="portfolio-image-div" style="overflow-x: visible;">';
 			$content .= get_the_post_thumbnail( $item->ID, 'large' );
 			$content .= '</div>';
 			$content .= '<p style="text-align: center ">' . get_the_title( $item->ID ) . '</p>';

@@ -10,6 +10,8 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	box-shadow: 0 0 10px #000;
+	background: white;
 }
 
 .portfolio_cell:hover {
@@ -47,7 +49,7 @@
 	flex: 0 0 20%;
   }
 
-  .bp-singlepage-thumbnail-div img{
+  .bp-singlepage-thumbnail-div img {
 	height: 90%;
   }
 
