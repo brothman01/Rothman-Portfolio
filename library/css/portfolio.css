@@ -13,6 +13,10 @@
 	box-shadow: 0 0 10px #000;
 	background: white;
 }
+.portfolio_cell img {
+	width: 100%;
+	height: auto;
+}
 
 .portfolio_cell:hover {
 	cursor: pointer;
@@ -173,3 +177,9 @@
 	
   }
   
+
+
+  /* block theme override??? */
+  body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: unset;
+  }
