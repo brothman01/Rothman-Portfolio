@@ -73,6 +73,8 @@ class Rothmanportfolio {
 		add_filter( 'register_post_type_args', array( $this, 'brs_add_cpts_to_api' ), 10, 2 );
 
 		add_action( 'all_admin_notices', array( $this, 'bp_add_shortcode_field' ) );
+
+		include_once( plugin_dir_path( __FILE__ ) . 'class-settings.php' );
 	}
 
 	/**
