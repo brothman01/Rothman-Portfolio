@@ -1,6 +1,14 @@
 (function($) {
 	
 $( document ).ready( function() {
+
+	$( 'body' ).on( 'click', '.portfolio_cell', function() {
+		let theUrl = $( this ).data('url');
+
+		window.location.href = theUrl;
+	});
+
+
 	$( 'body' ).on( 'mouseover', '.bp_portfolio_item_cell', function() {
 		$( this ).find( '.bp_portfolio_item_overlay' ).css( 'width', '100%' );
 	});
