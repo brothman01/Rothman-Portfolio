@@ -26,17 +26,17 @@
 	padding: 50px;
 	transition: transform .2s; /* Animation */
 	margin: 0 auto;
-  }
-  
-  .zoom:hover {
+}
+
+.zoom:hover {
 	transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  }
+}
 
-  .bp_singlepage_portfolio_item_huge_image img {
+.bp_singlepage_portfolio_item_huge_image img {
 	max-height: 800px;
-  }
+}
 
-  .bp-thumbnail-selector-row {
+.bp-thumbnail-selector-row {
 	height: 15vh;
 	display: flex;
 	padding: 1%;
@@ -45,82 +45,82 @@
 	border-bottom: 1px solid black;
 	border-right: 15px solid black;
 	justify-content: center;
-  }
+}
 
-  .bp-singlepage-thumbnail-div {
+.bp-singlepage-thumbnail-div {
 	display: flex;
 	justify-content: center;
 	flex: 0 0 20%;
-  }
+}
 
-  .bp-portfolio-item-selected-image {
+.bp-portfolio-item-selected-image {
 	outline: solid #5472d2 5px;
-  }
+}
 
-  .bp-singlepage-thumbnail-div img {
+.bp-singlepage-thumbnail-div img {
 	height: 90%;
-  }
+}
 
 
 /* Animation */
-  @-webkit-keyframes hvr-wobble-horizontal {
+@-webkit-keyframes hvr-wobble-horizontal {
 	16.65% {
-	  -webkit-transform: translateX(8px);
-	  transform: translateX(8px);
+	-webkit-transform: translateX(8px);
+	transform: translateX(8px);
 	}
 	33.3% {
-	  -webkit-transform: translateX(-6px);
-	  transform: translateX(-6px);
+	-webkit-transform: translateX(-6px);
+	transform: translateX(-6px);
 	}
 	49.95% {
-	  -webkit-transform: translateX(4px);
-	  transform: translateX(4px);
+	-webkit-transform: translateX(4px);
+	transform: translateX(4px);
 	}
 	66.6% {
-	  -webkit-transform: translateX(-2px);
-	  transform: translateX(-2px);
+	-webkit-transform: translateX(-2px);
+	transform: translateX(-2px);
 	}
 	83.25% {
-	  -webkit-transform: translateX(1px);
-	  transform: translateX(1px);
+	-webkit-transform: translateX(1px);
+	transform: translateX(1px);
 	}
 	100% {
-	  -webkit-transform: translateX(0);
-	  transform: translateX(0);
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
 	}
-  }
-  @keyframes hvr-wobble-horizontal {
+}
+@keyframes hvr-wobble-horizontal {
 	16.65% {
-	  -webkit-transform: translateX(8px);
-	  transform: translateX(8px);
+	-webkit-transform: translateX(8px);
+	transform: translateX(8px);
 	}
 	33.3% {
-	  -webkit-transform: translateX(-6px);
-	  transform: translateX(-6px);
+	-webkit-transform: translateX(-6px);
+	transform: translateX(-6px);
 	}
 	49.95% {
-	  -webkit-transform: translateX(4px);
-	  transform: translateX(4px);
+	-webkit-transform: translateX(4px);
+	transform: translateX(4px);
 	}
 	66.6% {
-	  -webkit-transform: translateX(-2px);
-	  transform: translateX(-2px);
+	-webkit-transform: translateX(-2px);
+	transform: translateX(-2px);
 	}
 	83.25% {
-	  -webkit-transform: translateX(1px);
-	  transform: translateX(1px);
+	-webkit-transform: translateX(1px);
+	transform: translateX(1px);
 	}
 	100% {
-	  -webkit-transform: translateX(0);
-	  transform: translateX(0);
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
 	}
-  }
-  .hvr-wobble-horizontal {
+}
+.hvr-wobble-horizontal {
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  }
-  .hvr-wobble-horizontal:hover, .hvr-wobble-horizontal:focus, .hvr-wobble-horizontal:active {
+}
+.hvr-wobble-horizontal:hover, .hvr-wobble-horizontal:focus, .hvr-wobble-horizontal:active {
 	-webkit-animation-name: hvr-wobble-horizontal;
 	animation-name: hvr-wobble-horizontal;
 	-webkit-animation-duration: 1s;
@@ -129,46 +129,46 @@
 	animation-timing-function: ease-in-out;
 	-webkit-animation-iteration-count: 1;
 	animation-iteration-count: 1;
-  }
+}
 /* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  
+
 	/* CSS */
 	
-  }
-  
-  /* 
+}
+
+/* 
 	##Device = Tablets, Ipads (landscape)
 	##Screen = B/w 768px to 1024px
-  */
-  
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 	
 	/* CSS */
 	
-  }
-  
-  /* 
+}
+
+/* 
 	##Device = Low Resolution Tablets, Mobiles (Landscape)
 	##Screen = B/w 481px to 767px
-  */
-  
-  @media (min-width: 481px) and (max-width: 767px) {
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
 	
 	/* CSS */
 	
-  }
+}
 
-  /* 
+/* 
 	##Device = Most of the Smartphones Mobiles (Portrait)
 	##Screen = B/w 320px to 479px
-  */
+*/
 
-  @media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 480px) {
 	
 	.portfolio_cell {
 		flex: 0 0 100%;
@@ -179,10 +179,10 @@
 		flex-direction: column;
 	}
 	
-  }
+}
 
 
-  /* block theme override??? */
-  body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-    max-width: unset;
-  }
+/* block theme override??? */
+body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+	max-width: unset;
+}
