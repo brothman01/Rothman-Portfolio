@@ -384,7 +384,7 @@ class Rothmanportfolio {
 	public function rp_enqueue_styles() {
 
 		// my custom styles.
-		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ), array(), '1.0.1' );
+		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ), array(), '1.0.2' );
 
 		// brothman_portfolio script.
 		wp_register_script( 'portfolio-script', plugins_url( 'library/js/brothman_portfolio.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
