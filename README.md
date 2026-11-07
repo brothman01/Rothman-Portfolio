@@ -12,6 +12,11 @@ This block renders the entire page in a grid, **you cannot render just one item 
 If you download the plugin from this github repository directly to use on your site, unzip the folder into the 'plugins' folder, execute `composer install` and `npm install` in the root directory, then `cd` into the 'wordpress-block' directory and execute `npm install` then `npm run build`.
 
 ## FAQ
+### How do I filter the portfolio by category?
+Add `?cat=category-slug` to the URL of a page containing `[portfolio_page]` or the Portfolio Page block, for example `/portfolio/?cat=web-apps`. Use the category slug from **Posts → Categories** (numeric slugs are also treated as slugs, not category IDs).
+
+The filter shows published portfolio items assigned directly to that category, excluding items assigned only to its child categories. An unknown category returns an empty grid. Missing, empty, or array-valued `cat` parameters preserve the existing Website category default. Other query parameters can be combined with it, for example `?cat=web-apps&utm_source=resume`.
+
 ### How many images can be displayed for a specific portfolio item?
 Items have the main image displayed in the grid (the featured image) and up to 5 thumbnail images that users can view while looking at the specific item.
 

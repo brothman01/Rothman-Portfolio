@@ -23,11 +23,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 
 	exit;
-
 }
 
 /* Require Composer autoloader */
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Rothmanportfolio class
@@ -47,10 +46,10 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_register_portfolio_item_cpt' ), 0 );
 
 		// load and start CMB2.
-		if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/cmb2/init.php';
-		} elseif ( file_exists( dirname( __FILE__ ) . '/vendor/CMB2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/CMB2/init.php';
+		if ( file_exists( __DIR__ . '/vendor/cmb2/init.php' ) ) {
+			require_once __DIR__ . '/vendor/cmb2/init.php';
+		} elseif ( file_exists( __DIR__ . '/vendor/CMB2/init.php' ) ) {
+			require_once __DIR__ . '/vendor/CMB2/init.php';
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT.
@@ -61,6 +60,9 @@ class Rothmanportfolio {
 
 		// register full portfolio  page shortcode.
 		add_shortcode( 'portfolio_page', array( $this, 'bp_portfolio_page_shortcode' ) );
+
+		// Keep WordPress's built-in cat query variable from turning a portfolio page into an archive.
+		add_filter( 'request', array( $this, 'bp_portfolio_category_request' ) );
 
 		// use my single template for single portfolio-item.
 		add_filter( 'template_include', array( $this, 'bp_include_template' ), 1 );
@@ -149,10 +151,8 @@ class Rothmanportfolio {
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'show_in_rest'        => true,
 		);
 		register_post_type( 'portfolio_item', $args );
-
 	}
 
 
@@ -218,7 +218,6 @@ class Rothmanportfolio {
 				'type' => 'file',
 			)
 		);
-
 	}
 
 	/**
@@ -238,8 +237,6 @@ class Rothmanportfolio {
 			'$atts'
 		);
 
-		$the_category = $atts['category'];
-
 		$content = '<div class="portfolio-container" style="width: 80%!important; margin: 0px auto;">';
 
 		$args = array(
@@ -250,6 +247,26 @@ class Rothmanportfolio {
 			'category_name'  => 'Website',
 			'post_status'    => 'publish',
 		);
+
+		// This is a public, read-only filter; no nonce is needed.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['cat'] ) && is_string( $_GET['cat'] ) && '' !== trim( sanitize_text_field( wp_unslash( $_GET['cat'] ) ) ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$category = sanitize_title( wp_unslash( $_GET['cat'] ) );
+			unset( $args['category_name'] );
+			if ( '' === $category ) {
+				$args['post__in'] = array( 0 );
+			} else {
+				$args['tax_query'] = array(
+					array(
+						'taxonomy'         => 'category',
+						'field'            => 'slug',
+						'terms'            => array( $category ),
+						'include_children' => false,
+					),
+				);
+			}
+		}
 
 		$posts = get_posts( $args );
 
@@ -291,7 +308,34 @@ class Rothmanportfolio {
 			$content .= '</div>';
 
 		return $content;
+	}
 
+	/**
+	 * Reserve cat for the portfolio filter only on pages containing a portfolio.
+	 *
+	 * @param array $query_vars Parsed public query variables.
+	 * @return array
+	 */
+	public function bp_portfolio_category_request( $query_vars ) {
+		if ( is_admin() || ! isset( $query_vars['cat'] ) ) {
+			return $query_vars;
+		}
+
+		$page = null;
+		if ( ! empty( $query_vars['page_id'] ) ) {
+			$page = get_post( (int) $query_vars['page_id'] );
+		} elseif ( ! empty( $query_vars['pagename'] ) ) {
+			$page = get_page_by_path( $query_vars['pagename'] );
+		} elseif ( 'page' === get_option( 'show_on_front' ) && ! array_diff( array_keys( $query_vars ), array( 'cat' ) ) ) {
+			$page = get_post( (int) get_option( 'page_on_front' ) );
+		}
+
+		if ( $page instanceof WP_Post && 'page' === $page->post_type &&
+			( has_shortcode( $page->post_content, 'portfolio_page' ) || has_block( 'create-block/my-block', $page ) ) ) {
+			unset( $query_vars['cat'] );
+		}
+
+		return $query_vars;
 	}
 
 	/**
@@ -302,7 +346,6 @@ class Rothmanportfolio {
 	public function odevice_image_sizes() {
 
 		add_image_size( 'home-size', 300, 100, true );
-
 	}
 
 	/**
@@ -350,7 +393,6 @@ class Rothmanportfolio {
 		$content .= '</div>';
 
 		return $content;
-
 	}
 
 	/**
@@ -381,7 +423,6 @@ class Rothmanportfolio {
 
 		// enqueue bootstrap.
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', array(), '1.0.0' );
-
 	}
 
 	/**
@@ -399,7 +440,6 @@ class Rothmanportfolio {
 		}
 
 		return $template_path;
-
 	}
 
 	/** Overides the declarations of every CPT to make sure they are all have endpoints in the REST API.
@@ -417,7 +457,6 @@ class Rothmanportfolio {
 		}
 
 		return $args;
-
 	}
 
 	/**
@@ -426,9 +465,7 @@ class Rothmanportfolio {
 	public function bp_create_block() {
 
 		register_block_type( __DIR__ . '/wordpress-block/build' );
-
 	}
-
 }
 
 new Rothmanportfolio();
