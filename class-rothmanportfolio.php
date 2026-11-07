@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Require Composer autoloader */
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Rothmanportfolio class
@@ -47,10 +47,10 @@ class Rothmanportfolio {
 		add_action( 'init', array( $this, 'bp_register_portfolio_item_cpt' ), 0 );
 
 		// load and start CMB2.
-		if ( file_exists( dirname( __FILE__ ) . '/vendor/cmb2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/cmb2/init.php';
-		} elseif ( file_exists( dirname( __FILE__ ) . '/vendor/CMB2/init.php' ) ) {
-			require_once dirname( __FILE__ ) . '/vendor/CMB2/init.php';
+		if ( file_exists( __DIR__ . '/vendor/cmb2/init.php' ) ) {
+			require_once __DIR__ . '/vendor/cmb2/init.php';
+		} elseif ( file_exists( __DIR__ . '/vendor/CMB2/init.php' ) ) {
+			require_once __DIR__ . '/vendor/CMB2/init.php';
 		}
 
 		// // register and add the metaboxes to the portfolio item CPT.
@@ -152,10 +152,8 @@ class Rothmanportfolio {
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'show_in_rest'        => true,
 		);
 		register_post_type( 'portfolio_item', $args );
-
 	}
 
 
@@ -221,7 +219,6 @@ class Rothmanportfolio {
 				'type' => 'file',
 			)
 		);
-
 	}
 
 	/**
@@ -254,7 +251,7 @@ class Rothmanportfolio {
 
 		// This is a public, read-only filter; no nonce is needed.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['cat'] ) && is_string( $_GET['cat'] ) && '' !== trim( $_GET['cat'] ) ) {
+		if ( isset( $_GET['cat'] ) && is_string( $_GET['cat'] ) && '' !== trim( sanitize_text_field( wp_unslash( $_GET['cat'] ) ) ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$category = sanitize_title( wp_unslash( $_GET['cat'] ) );
 			unset( $args['category_name'] );
