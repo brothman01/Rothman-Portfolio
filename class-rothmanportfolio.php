@@ -23,7 +23,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 
 	exit;
-
 }
 
 /* Require Composer autoloader */
@@ -309,7 +308,6 @@ class Rothmanportfolio {
 			$content .= '</div>';
 
 		return $content;
-
 	}
 
 	/**
@@ -348,7 +346,6 @@ class Rothmanportfolio {
 	public function odevice_image_sizes() {
 
 		add_image_size( 'home-size', 300, 100, true );
-
 	}
 
 	/**
@@ -396,7 +393,6 @@ class Rothmanportfolio {
 		$content .= '</div>';
 
 		return $content;
-
 	}
 
 	/**
@@ -427,7 +423,6 @@ class Rothmanportfolio {
 
 		// enqueue bootstrap.
 		wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', array(), '1.0.0' );
-
 	}
 
 	/**
@@ -445,7 +440,6 @@ class Rothmanportfolio {
 		}
 
 		return $template_path;
-
 	}
 
 	/** Overides the declarations of every CPT to make sure they are all have endpoints in the REST API.
@@ -463,7 +457,6 @@ class Rothmanportfolio {
 		}
 
 		return $args;
-
 	}
 
 	/**
@@ -472,9 +465,7 @@ class Rothmanportfolio {
 	public function bp_create_block() {
 
 		register_block_type( __DIR__ . '/wordpress-block/build' );
-
 	}
-
 }
 
 new Rothmanportfolio();
