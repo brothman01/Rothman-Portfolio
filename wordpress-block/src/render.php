@@ -1,4 +1,4 @@
-<?php include '../class-rothmanportfolio.php'; $instance = new Rothmanportfolio(); ?>
+<?php require_once dirname( __DIR__, 2 ) . '/class-rothmanportfolio.php'; $instance = new Rothmanportfolio(); ?>
 
 <p <?php echo get_block_wrapper_attributes(); ?>>
 
