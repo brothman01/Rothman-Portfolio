@@ -75,17 +75,13 @@
 	outline-offset: -6px;
 }
 
-.bp-portfolio-item-cell:hover {
+.portfolio-container .bp-portfolio-row .bp-portfolio-item-cell:hover {
 	transform: scale(1.1);
 }
 
 .bp-portfolio-item-cell p {
 	color: var(--highlight-color);
 	overflow-wrap: anywhere;
-}
-
-.bp-portfolio-item-cell a {
-	text-decoration: none;
 }
 
 .bp-portfolio-item-cell img {
