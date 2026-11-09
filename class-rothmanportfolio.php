@@ -237,7 +237,7 @@ class Rothmanportfolio {
 			'$atts'
 		);
 
-		$content = '<div class="portfolio-container" style="width: 80%!important; margin: 0px auto;">';
+		$content = '<div class="portfolio-container">';
 
 		$args = array(
 			'post_type'      => 'portfolio_item',
@@ -270,25 +270,51 @@ class Rothmanportfolio {
 
 		$posts = get_posts( $args );
 
-		$rows = array_chunk( $posts, 3 );
-
-		foreach ( $rows as $row ) {
-			$content .= '<div class="bp-portfolio-row prevent-select">';
-			foreach ( $row as $item ) {
-				$content .= '<a class="bp-portfolio-item-link" href="' . esc_url( get_permalink( $item->ID ) ) . '">';
-				$content .= '<div class="bp-portfolio-item-cell">';
-				$content .= '<div class="bp-portfolio-image">';
-				$content .= get_the_post_thumbnail( $item->ID, 'large' );
-				$content .= '</div>';
-				$content .= '<p>' . esc_html( get_the_title( $item->ID ) ) . '</p>';
-				$content .= '</div></a>';
-			}
+		// One grid lets cards flow across responsive rows without gaps after every third item.
+		$content .= '<div class="bp-portfolio-row prevent-select">';
+		foreach ( $posts as $item ) {
+			$content .= '<a class="bp-portfolio-item-link" href="' . esc_url( get_permalink( $item->ID ) ) . '">';
+			$content .= '<div class="bp-portfolio-item-cell">';
+			$content .= '<div class="bp-portfolio-image">';
+			$content .= $this->bp_portfolio_card_image( $item->ID );
 			$content .= '</div>';
+			$content .= '<p>' . esc_html( get_the_title( $item->ID ) ) . '</p>';
+			$content .= '</div></a>';
 		}
-
-		$content .= '</div>';
+		$content .= '</div></div>';
 
 		return $content;
+	}
+
+	/**
+	 * Render a responsive card image, falling back to the first portfolio image.
+	 *
+	 * @param int $post_id Portfolio item ID.
+	 * @return string Image markup or a visible empty state.
+	 */
+	public function bp_portfolio_card_image( $post_id ) {
+		$attributes = array(
+			'sizes' => '(max-width: 600px) 90vw, (max-width: 900px) 45vw, 27vw',
+		);
+		$image      = get_the_post_thumbnail( $post_id, 'large', $attributes );
+		if ( $image ) {
+			return $image;
+		}
+
+		$image_id = absint( get_post_meta( $post_id, 'Brothman_Portfolio_image1_id', true ) );
+		if ( $image_id ) {
+			$image = wp_get_attachment_image( $image_id, 'large', false, $attributes );
+			if ( $image ) {
+				return $image;
+			}
+		}
+
+		$image_url = get_post_meta( $post_id, 'Brothman_Portfolio_image1', true );
+		if ( is_string( $image_url ) && '' !== esc_url( $image_url ) ) {
+			return '<img src="' . esc_url( $image_url ) . '" alt="" loading="lazy" decoding="async" />';
+		}
+
+		return '<span class="bp-portfolio-image-placeholder">' . esc_html__( 'Preview unavailable', 'brothman_portfolio' ) . '</span>';
 	}
 
 	/**
@@ -384,7 +410,7 @@ class Rothmanportfolio {
 	public function rp_enqueue_styles() {
 
 		// my custom styles.
-		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ), array(), '1.0.2' );
+		wp_enqueue_style( 'my-styles', plugins_url( 'library/css/portfolio.css', __FILE__ ), array(), '1.0.3' );
 
 		// brothman_portfolio script.
 		wp_register_script( 'portfolio-script', plugins_url( 'library/js/brothman_portfolio.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
