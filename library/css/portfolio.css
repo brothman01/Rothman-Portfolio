@@ -23,14 +23,15 @@
 }
 
 .portfolio-container {
-	width: 100%;
+	width: 90%;
+	max-width: 1400px;
 	margin: 0 auto;
 }
 
 .bp-portfolio-row {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 30px;
+	gap: clamp(16px, 2.5vw, 30px);
 	padding: 10px;
 	margin-bottom: 30px;
 }
@@ -67,35 +68,76 @@
 	transition-duration: 0.3s;
 	transition-property: transform;
 	overflow-y: hidden;
-	min-height: 250px;
+	min-height: 0;
 	height: 100%;
 	box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
-	padding: 20px;
+	padding: clamp(12px, 2vw, 20px);
 	outline: 1px solid #000;
 	outline-offset: -6px;
 }
 
-.portfolio-container .bp-portfolio-row .bp-portfolio-item-cell:hover {
-	transform: scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+
+	.portfolio-container .bp-portfolio-row .bp-portfolio-item-cell:hover {
+		transform: translateY(-4px);
+	}
 }
 
-.bp-portfolio-item-cell p {
+.portfolio-container .bp-portfolio-item-cell p {
 	color: var(--highlight-color);
+	font-size: clamp(16px, 1.5vw, 22px);
+	line-height: 1.4;
+	margin: 12px 0 0;
 	overflow-wrap: anywhere;
 }
 
-.bp-portfolio-item-cell img {
-	width: auto !important;
-	max-width: 100%;
-	max-height: 140px;
-	object-fit: contain;
-	margin: 0 auto;
+.portfolio-container .bp-portfolio-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 3 / 2;
+	min-height: 0;
+	max-height: none;
+	margin: 0;
+	overflow: hidden;
 }
 
-.bp-portfolio-item-cell a img {
-	max-width: 160px !important;
-	margin: 0 auto;
-	padding-top: 15%;
+.portfolio-container .bp-portfolio-item-cell .bp-portfolio-image img {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	margin: 0;
+	padding: 0;
+}
+
+.bp-portfolio-image-placeholder {
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+
+	.portfolio-container .bp-portfolio-row {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+
+	.portfolio-container .bp-portfolio-row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.portfolio-container .bp-portfolio-row .bp-portfolio-item-cell {
+		transition: none;
+		transform: none;
+	}
 }
 
 
